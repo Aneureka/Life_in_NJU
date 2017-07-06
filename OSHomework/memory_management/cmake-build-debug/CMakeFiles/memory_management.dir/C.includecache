@@ -1,0 +1,64 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/bottom.c
+stdlib.h
+-
+stdio.h
+-
+bottom.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/bottom.h
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/bottom.h
+type.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/type.h
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/call.c
+call.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/call.h
+process.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/process.h
+stdio.h
+-
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/call.h
+type.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/type.h
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/page.c
+page.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/page.h
+stdio.h
+-
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/page.h
+type.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/type.h
+bottom.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/bottom.h
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/process.c
+process.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/process.h
+stdio.h
+-
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/process.h
+page.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/page.h
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/test.c
+call.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/call.h
+bottom.h
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/bottom.h
+stdio.h
+-
+
+F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/type.h
+

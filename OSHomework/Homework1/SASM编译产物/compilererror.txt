@@ -1,0 +1,6 @@
+/tmp/SASM/program.asm:571: warning: label alone on a line without a colon might be in error
+/tmp/SASM/program.asm:584: warning: label alone on a line without a colon might be in error
+/tmp/SASM/program.asm:598: warning: label alone on a line without a colon might be in error
+/tmp/SASM/program.asm:612: warning: label alone on a line without a colon might be in error
+/tmp/SASM/program.asm:626: warning: label alone on a line without a colon might be in error
+/tmp/SASM/program.asm:640: warning: label alone on a line without a colon might be in error

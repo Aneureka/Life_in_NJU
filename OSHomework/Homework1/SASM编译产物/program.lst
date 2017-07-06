@@ -1,0 +1,1454 @@
+     1                                  %include "io.inc"
+     2                              <1> %ifndef IO_SYS
+     3                              <1> %define IO_SYS
+     4                              <1> 
+     5                              <1> %macro sasmMacroFunc 0.nolist ;func for debug
+     6                              <1>     %push sasmMacroFunc
+     7                              <1>     call %$sasmMacro
+     8                              <1>     jmp %$sasmMacroE
+     9                              <1>     %$sasmMacro:
+    10                              <1>     jmp %%after_data
+    11                              <1> section .data
+    12                              <1>     %$sasmRetAddr dd 0
+    13                              <1> section .text
+    14                              <1>     %%after_data:
+    15                              <1>     push ebx
+    16                              <1>     mov ebx, dword[esp + 4]
+    17                              <1>     mov dword[%$sasmRetAddr], ebx
+    18                              <1>     mov ebx, dword[esp]
+    19                              <1>     mov dword[esp + 4], ebx
+    20                              <1>     pop ebx
+    21                              <1>     pop ebx
+    22                              <1> %endmacro
+    23                              <1> 
+    24                              <1> %macro sasmMacroFuncE 0.nolist ;exit
+    25                              <1>     push dword[%$sasmRetAddr]
+    26                              <1>     ret
+    27                              <1>     %$sasmMacroE:
+    28                              <1>     %pop
+    29                              <1> %endmacro
+    30                              <1> 
+    31                              <1> %macro CEXTERN 1.nolist
+    32                              <1>     extern %1
+    33                              <1> %endmacro
+    34                              <1> %define CMAIN main
+    35                              <1> 
+    36                              <1> CEXTERN printf
+    37                              <1> CEXTERN scanf
+    38                              <1> CEXTERN putchar
+    39                              <1> CEXTERN fgets
+    40                              <1> CEXTERN puts
+    41                              <1> CEXTERN fputs
+    42                              <1> CEXTERN fflush
+    43                              <1> 
+    44                              <1> CEXTERN get_stdin
+    45                              <1> CEXTERN get_stdout
+    46                              <1> 
+    47                              <1> ; Make stack be 16 bytes aligned after pushing %1 bytes
+    48                              <1> %macro ALIGN_STACK 1.nolist
+    49                              <1>     enter 0, 0
+    50                              <1>     sub esp, %1
+    51                              <1>     and esp, 0xfffffff0
+    52                              <1>     add esp, %1
+    53                              <1> %endmacro
+    54                              <1> 
+    55                              <1> %macro UNALIGN_STACK 0.nolist
+    56                              <1>     leave
+    57                              <1> %endmacro
+    58                              <1> 
+    59                              <1> %macro FFLUSH_STDOUT 0.nolist
+    60                              <1>     ALIGN_STACK 4
+    61                              <1>     call get_stdout
+    62                              <1>     push eax
+    63                              <1>     call fflush
+    64                              <1>     UNALIGN_STACK
+    65                              <1> %endmacro
+    66                              <1> 
+    67                              <1> %macro IS_GPR 1.nolist
+    68                              <1>     %push IS_GPR
+    69                              <1>     %assign %$is_reg 0
+    70                              <1>     %assign %$reg_size 1
+    71                              <1>     %ifidni %1, ah
+    72                              <1>         %assign %$is_reg 1
+    73                              <1>     %elifidni %1, al
+    74                              <1>         %assign %$is_reg 1
+    75                              <1>     %elifidni %1, bl
+    76                              <1>         %assign %$is_reg 1
+    77                              <1>     %elifidni %1, bh
+    78                              <1>         %assign %$is_reg 1
+    79                              <1>     %elifidni %1, cl
+    80                              <1>         %assign %$is_reg 1
+    81                              <1>     %elifidni %1, ch
+    82                              <1>         %assign %$is_reg 1
+    83                              <1>     %elifidni %1, dl
+    84                              <1>         %assign %$is_reg 1
+    85                              <1>     %elifidni %1, dh
+    86                              <1>         %assign %$is_reg 1
+    87                              <1>     %elifidni %1, ax
+    88                              <1>         %assign %$is_reg 1
+    89                              <1>         %assign %$reg_size 2
+    90                              <1>     %elifidni %1, bx
+    91                              <1>         %assign %$is_reg 1
+    92                              <1>         %assign %$reg_size 2
+    93                              <1>     %elifidni %1, cx
+    94                              <1>         %assign %$is_reg 1
+    95                              <1>         %assign %$reg_size 2
+    96                              <1>     %elifidni %1, dx
+    97                              <1>         %assign %$is_reg 1
+    98                              <1>         %assign %$reg_size 2
+    99                              <1>     %elifidni %1, sp
+   100                              <1>         %assign %$is_reg 1
+   101                              <1>         %assign %$reg_size 2
+   102                              <1>     %elifidni %1, bp
+   103                              <1>         %assign %$is_reg 1
+   104                              <1>         %assign %$reg_size 2
+   105                              <1>     %elifidni %1, si
+   106                              <1>         %assign %$is_reg 1
+   107                              <1>         %assign %$reg_size 2
+   108                              <1>     %elifidni %1, di
+   109                              <1>         %assign %$is_reg 1
+   110                              <1>         %assign %$reg_size 2
+   111                              <1>     %elifidni %1, eax
+   112                              <1>         %assign %$is_reg 1
+   113                              <1>         %assign %$reg_size 4
+   114                              <1>     %elifidni %1, ebx
+   115                              <1>         %assign %$is_reg 1
+   116                              <1>         %assign %$reg_size 4
+   117                              <1>     %elifidni %1, ecx
+   118                              <1>         %assign %$is_reg 1
+   119                              <1>         %assign %$reg_size 4
+   120                              <1>     %elifidni %1, edx
+   121                              <1>         %assign %$is_reg 1
+   122                              <1>         %assign %$reg_size 4
+   123                              <1>     %elifidni %1, esp
+   124                              <1>         %assign %$is_reg 1
+   125                              <1>         %assign %$reg_size 4
+   126                              <1>     %elifidni %1, ebp
+   127                              <1>         %assign %$is_reg 1
+   128                              <1>         %assign %$reg_size 4
+   129                              <1>     %elifidni %1, esi
+   130                              <1>         %assign %$is_reg 1
+   131                              <1>         %assign %$reg_size 4
+   132                              <1>     %elifidni %1, edi
+   133                              <1>         %assign %$is_reg 1
+   134                              <1>         %assign %$reg_size 4
+   135                              <1>     %endif
+   136                              <1> %endmacro
+   137                              <1> 
+   138                              <1> 
+   139                              <1> %macro PRINT_STRING 1.nolist
+   140                              <1>     sasmMacroFunc
+   141                              <1>     IS_GPR %1
+   142                              <1>     %if %$is_reg = 1
+   143                              <1>     %error "Register as parameter is not supported"
+   144                              <1>     %endif
+   145                              <1>     %pop
+   146                              <1> 
+   147                              <1> %ifid %1
+   148                              <1> ; variable
+   149                              <1>     pushf
+   150                              <1>     push edx
+   151                              <1>     push ecx
+   152                              <1>     push eax	
+   153                              <1> 
+   154                              <1>     ALIGN_STACK 0
+   155                              <1>     call get_stdout
+   156                              <1>     UNALIGN_STACK
+   157                              <1>     ALIGN_STACK 8
+   158                              <1>     push eax 
+   159                              <1>     push %1
+   160                              <1> 
+   161                              <1> %elifstr %1
+   162                              <1> ; string literal
+   163                              <1>     pushf
+   164                              <1>     push edx
+   165                              <1>     push ecx
+   166                              <1>     push eax	
+   167                              <1> 
+   168                              <1>     jmp %%after_str
+   169                              <1>     %%str	db	%1, 0
+   170                              <1> %%after_str:	
+   171                              <1>     ALIGN_STACK 0
+   172                              <1>     call get_stdout
+   173                              <1>     UNALIGN_STACK
+   174                              <1>     ALIGN_STACK 8
+   175                              <1>     push eax
+   176                              <1>     push %%str
+   177                              <1> 
+   178                              <1> %else
+   179                              <1> ; address expression
+   180                              <1>     jmp %%after_data
+   181                              <1> section .data
+   182                              <1>     %%tmp dd 0
+   183                              <1> section .text
+   184                              <1> %%after_data:
+   185                              <1>     mov dword [%%tmp], edi
+   186                              <1>     lea edi, %1
+   187                              <1> 
+   188                              <1>     pushf
+   189                              <1>     push edx
+   190                              <1>     push ecx
+   191                              <1>     push eax
+   192                              <1> 
+   193                              <1>     ALIGN_STACK 0
+   194                              <1>     call get_stdout
+   195                              <1>     UNALIGN_STACK
+   196                              <1>     ALIGN_STACK 8
+   197                              <1>     push eax
+   198                              <1>     push edi
+   199                              <1> 
+   200                              <1>     mov edi, dword [%%tmp]
+   201                              <1>     
+   202                              <1> %endif
+   203                              <1> 
+   204                              <1>     call fputs
+   205                              <1>     UNALIGN_STACK
+   206                              <1>     FFLUSH_STDOUT
+   207                              <1>     pop eax
+   208                              <1>     pop ecx
+   209                              <1>     pop edx
+   210                              <1>     popf
+   211                              <1>     sasmMacroFuncE
+   212                              <1> %endmacro
+   213                              <1> 
+   214                              <1> %macro NEWLINE 0.nolist
+   215                              <1>     PRINT_STRING `\n`
+   216                              <1> %endmacro
+   217                              <1> 
+   218                              <1> ; size baseformatletter ("d", "u", "x") varname (%%fmt)
+   219                              <1> %macro ___MAKE_FORMAT_STR 3.nolist
+   220                              <1>     jmp %%after_fmt
+   221                              <1>     %if %1 = 1
+   222                              <1>         %strcat fmts "%hh" %2
+   223                              <1>         
+   224                              <1>     %elif %1 = 2
+   225                              <1>         %strcat fmts "%h" %2
+   226                              <1>     %elif %1 = 4
+   227                              <1>         %strcat fmts "%" %2
+   228                              <1>     %else
+   229                              <1>         %error "Expected numeric constant 1, 2 or 4 as 1st argument"
+   230                              <1>     %endif
+   231                              <1>     %3 db fmts, 0
+   232                              <1>     %%after_fmt:
+   233                              <1> %endmacro
+   234                              <1> 
+   235                              <1> ; size data baseformatletter ("d", "u", "x") signextendinst (movzx, movsx)
+   236                              <1> %macro ___PRINT_NUM_COMMON 4.nolist
+   237                              <1>     ___MAKE_FORMAT_STR %1, %3, %%fmt
+   238                              <1>         
+   239                              <1>     jmp %%after_data
+   240                              <1> section .data
+   241                              <1>     %%tmp dd 0
+   242                              <1> 
+   243                              <1> section .text
+   244                              <1> %%after_data:
+   245                              <1> 
+   246                              <1>     IS_GPR %2
+   247                              <1> 
+   248                              <1> %if %$is_reg = 1
+   249                              <1> ; register
+   250                              <1> 
+   251                              <1>     mov dword [%%tmp], eax    ; may be register is esp, need to take care
+   252                              <1> 
+   253                              <1>     %if %$reg_size = 1
+   254                              <1>         %4 eax, %2
+   255                              <1>     %elif %$reg_size = 2
+   256                              <1>         %4 eax, %2
+   257                              <1>     %else ; %$reg_size = 4
+   258                              <1>         mov eax, %2
+   259                              <1>     %endif
+   260                              <1> 
+   261                              <1>     pushf
+   262                              <1>     push dword [%%tmp] ; eax
+   263                              <1>     push ecx
+   264                              <1>     push edx
+   265                              <1> 
+   266                              <1>     ALIGN_STACK 8
+   267                              <1>     push eax
+   268                              <1> 
+   269                              <1> %elifid %2
+   270                              <1> ; variable (hope so)
+   271                              <1>     pushf
+   272                              <1>     push eax
+   273                              <1>     push ecx
+   274                              <1>     push edx
+   275                              <1>     
+   276                              <1> %if %1 = 1
+   277                              <1>     %4 eax, byte [%2]
+   278                              <1> %elif %1 = 2
+   279                              <1>     %4 eax, word [%2]
+   280                              <1> %else ; %1 = 4
+   281                              <1>     mov eax, dword [%2]
+   282                              <1> %endif
+   283                              <1> 
+   284                              <1>     ALIGN_STACK 8
+   285                              <1>     push eax
+   286                              <1> 
+   287                              <1> %elifnum %2
+   288                              <1>     pushf
+   289                              <1>     push eax
+   290                              <1>     push ecx
+   291                              <1>     push edx
+   292                              <1> 
+   293                              <1>     ALIGN_STACK 8
+   294                              <1>     push %2
+   295                              <1> %elifstr %2
+   296                              <1>     pushf
+   297                              <1>     push eax
+   298                              <1>     push ecx
+   299                              <1>     push edx
+   300                              <1> 
+   301                              <1>     ALIGN_STACK 8
+   302                              <1>     push %2
+   303                              <1> 
+   304                              <1> %else
+   305                              <1> ; may be, address expression?
+   306                              <1>     
+   307                              <1>     mov dword [%%tmp], eax    ; may use register esp, need to take care
+   308                              <1> 
+   309                              <1>     %if %1 = 1
+   310                              <1>         %4 eax, byte %2
+   311                              <1>     %elif %1 = 2
+   312                              <1>         %4 eax, word %2
+   313                              <1>     %else ; %1 = 4
+   314                              <1>         mov eax, dword %2
+   315                              <1>     %endif
+   316                              <1> 
+   317                              <1>     pushf
+   318                              <1>     push dword [%%tmp] ; eax
+   319                              <1>     push ecx
+   320                              <1>     push edx
+   321                              <1> 
+   322                              <1>     ALIGN_STACK 8
+   323                              <1>     push eax
+   324                              <1> 
+   325                              <1> %endif
+   326                              <1> 
+   327                              <1>     push %%fmt
+   328                              <1>     call printf
+   329                              <1>     UNALIGN_STACK
+   330                              <1>     FFLUSH_STDOUT
+   331                              <1> 
+   332                              <1>     pop edx
+   333                              <1>     pop ecx
+   334                              <1>     pop eax
+   335                              <1>     popf    
+   336                              <1> 
+   337                              <1>     %pop ; IS_REG
+   338                              <1>     
+   339                              <1> %endmacro
+   340                              <1> 
+   341                              <1> %macro PRINT_DEC 2.nolist
+   342                              <1>     sasmMacroFunc
+   343                              <1>     ___PRINT_NUM_COMMON %1, %2, "d", movsx
+   344                              <1>     sasmMacroFuncE
+   345                              <1> %endmacro
+   346                              <1> 
+   347                              <1> %macro PRINT_UDEC 2.nolist
+   348                              <1>     sasmMacroFunc
+   349                              <1>     ___PRINT_NUM_COMMON %1, %2, "u", movzx
+   350                              <1>     sasmMacroFuncE
+   351                              <1> %endmacro
+   352                              <1> 
+   353                              <1> %macro PRINT_HEX 2.nolist
+   354                              <1>     sasmMacroFunc
+   355                              <1>     ___PRINT_NUM_COMMON %1, %2, "x", movzx
+   356                              <1>     sasmMacroFuncE
+   357                              <1> %endmacro
+   358                              <1> 
+   359                              <1> %macro PRINT_CHAR 1.nolist
+   360                              <1>     sasmMacroFunc
+   361                              <1> 
+   362                              <1>     jmp %%after_data
+   363                              <1> section .data
+   364                              <1>     %%tmp dd 0
+   365                              <1> 
+   366                              <1> section .text
+   367                              <1> %%after_data:
+   368                              <1> 
+   369                              <1>     IS_GPR %1
+   370                              <1> 
+   371                              <1> %if %$is_reg = 1
+   372                              <1> ; register
+   373                              <1> 
+   374                              <1>     mov dword [%%tmp], eax    ; may be register is esp, need to take care
+   375                              <1> 
+   376                              <1>     %if %$reg_size = 1
+   377                              <1>         movzx eax, %1
+   378                              <1>     %elif %$reg_size = 2
+   379                              <1>         movzx eax, %1
+   380                              <1>     %else ; %$reg_size = 4
+   381                              <1>         mov eax, %1
+   382                              <1>     %endif
+   383                              <1> 
+   384                              <1>     pushf
+   385                              <1>     push dword [%%tmp] ; eax
+   386                              <1>     push ecx
+   387                              <1>     push edx
+   388                              <1> 
+   389                              <1>     and eax, 0xff
+   390                              <1>     ALIGN_STACK 4
+   391                              <1>     push eax
+   392                              <1> 
+   393                              <1> %elifid %1
+   394                              <1> ; variable (hope so)
+   395                              <1>     pushf
+   396                              <1>     push eax
+   397                              <1>     push ecx
+   398                              <1>     push edx
+   399                              <1> 
+   400                              <1>     movzx eax, byte [%1]
+   401                              <1>     ALIGN_STACK 4    
+   402                              <1>     push eax
+   403                              <1> 
+   404                              <1> %elifnum %1
+   405                              <1>     pushf
+   406                              <1>     push eax
+   407                              <1>     push ecx
+   408                              <1>     push edx
+   409                              <1> 
+   410                              <1>     ALIGN_STACK 4
+   411                              <1>     push (%1 & 0xff)
+   412                              <1> %elifstr %1
+   413                              <1>     pushf
+   414                              <1>     push eax
+   415                              <1>     push ecx
+   416                              <1>     push edx
+   417                              <1> 
+   418                              <1> ; string; select only 1st byte
+   419                              <1> %substr tstr %1 1
+   420                              <1>     ALIGN_STACK 4
+   421                              <1>     push tstr
+   422                              <1> 
+   423                              <1> %else
+   424                              <1> ; may be, address expression?
+   425                              <1>     
+   426                              <1>     mov dword [%%tmp], eax    ; may use register esp, need to take care
+   427                              <1> 
+   428                              <1>     movzx eax, byte %1
+   429                              <1> 
+   430                              <1>     pushf
+   431                              <1>     push dword [%%tmp] ; eax
+   432                              <1>     push ecx
+   433                              <1>     push edx
+   434                              <1> 
+   435                              <1>     ALIGN_STACK 4
+   436                              <1>     push eax
+   437                              <1> 
+   438                              <1> %endif
+   439                              <1> 
+   440                              <1>     call putchar
+   441                              <1>     UNALIGN_STACK
+   442                              <1>     FFLUSH_STDOUT
+   443                              <1> 
+   444                              <1>     pop edx
+   445                              <1>     pop ecx
+   446                              <1>     pop eax
+   447                              <1>     popf    
+   448                              <1> 
+   449                              <1>     %pop ; IS_REG
+   450                              <1>     sasmMacroFuncE
+   451                              <1> %endmacro
+   452                              <1> 
+   453                              <1> 
+   454                              <1> ; size data baseformatletter ("d", "u", "x") signextendinst (movzx, movsx)
+   455                              <1> %macro ___GET_NUM_COMMON 4.nolist
+   456                              <1> 
+   457                              <1>     ___MAKE_FORMAT_STR %1, %3, %%fmt
+   458                              <1>         
+   459                              <1>     jmp %%after_data
+   460                              <1> section .data
+   461                              <1>     %%tmp dd 0
+   462                              <1>     %%read_tmp dd 0
+   463                              <1> 
+   464                              <1> section .text
+   465                              <1> %%after_data:
+   466                              <1> 
+   467                              <1>     IS_GPR %2
+   468                              <1> 
+   469                              <1> %if %$is_reg = 1
+   470                              <1> ; register
+   471                              <1> 
+   472                              <1>     %ifidni %2, esp
+   473                              <1>         %error "Won't read to esp!" 
+   474                              <1>     %elifidni %2, sp
+   475                              <1>         %error "Won't read to sp!" 
+   476                              <1>     %endif
+   477                              <1> 
+   478                              <1>     %if %$reg_size < %1
+   479                              <1>         %error "Too small register for requested data"
+   480                              <1>     %endif
+   481                              <1> 
+   482                              <1>     pushf
+   483                              <1>     push eax
+   484                              <1>     push ecx
+   485                              <1>     push edx
+   486                              <1> 
+   487                              <1> ; we will have to do postprocessing after scanf
+   488                              <1>     ALIGN_STACK 8
+   489                              <1>     push %%read_tmp
+   490                              <1> 
+   491                              <1> %elifid %2
+   492                              <1> ; variable (hope so)
+   493                              <1>     pushf
+   494                              <1>     push eax
+   495                              <1>     push ecx
+   496                              <1>     push edx
+   497                              <1> 
+   498                              <1>     ALIGN_STACK 8    
+   499                              <1>     push %2
+   500                              <1> %elifnum %2
+   501                              <1>     %error "Incorrect parameter (number)"
+   502                              <1> %elifstr %2
+   503                              <1>     %error "Incorrect parameter (string)"
+   504                              <1> %else
+   505                              <1> ; may be, address expression?
+   506                              <1>     
+   507                              <1>     mov dword [%%tmp], eax    ; may use register esp, need to take care
+   508                              <1> 
+   509                              <1>     lea eax, %2
+   510                              <1> 
+   511                              <1>     pushf
+   512                              <1>     push dword [%%tmp] ; eax
+   513                              <1>     push ecx
+   514                              <1>     push edx
+   515                              <1> 
+   516                              <1>     ALIGN_STACK 8
+   517                              <1>     push eax
+   518                              <1> %endif
+   519                              <1> 
+   520                              <1>     push %%fmt
+   521                              <1>     call scanf
+   522                              <1>     UNALIGN_STACK
+   523                              <1> 
+   524                              <1>     pop edx
+   525                              <1>     pop ecx
+   526                              <1>     pop eax
+   527                              <1>     popf    
+   528                              <1> 
+   529                              <1> %if %$is_reg = 1
+   530                              <1> ; register postprocessing
+   531                              <1> 
+   532                              <1> %if %$reg_size = %1
+   533                              <1>     mov %2, [%%read_tmp]
+   534                              <1> %else ; extend bytes 1 -> 2, 1 -> 4, 2 -> 4
+   535                              <1>     %if %1 = 1
+   536                              <1>         %4 %2, byte [%%read_tmp]
+   537                              <1>     %else ; 2 -> 4
+   538                              <1>         %4 %2, word [%%read_tmp]
+   539                              <1>     %endif
+   540                              <1> %endif
+   541                              <1> 
+   542                              <1> %endif
+   543                              <1> 
+   544                              <1>     %pop ; IS_REG
+   545                              <1> %endmacro
+   546                              <1> 
+   547                              <1> %macro GET_HEX 2.nolist
+   548                              <1>     sasmMacroFunc
+   549                              <1>     ___GET_NUM_COMMON %1, %2, "x", movzx
+   550                              <1>     sasmMacroFuncE
+   551                              <1> %endmacro
+   552                              <1> 
+   553                              <1> %macro GET_DEC 2.nolist
+   554                              <1>     sasmMacroFunc
+   555                              <1>     ___GET_NUM_COMMON %1, %2, "d", movsx
+   556                              <1>     sasmMacroFuncE
+   557                              <1> %endmacro
+   558                              <1> 
+   559                              <1> %macro GET_UDEC 2.nolist
+   560                              <1>     sasmMacroFunc
+   561                              <1>     ___GET_NUM_COMMON %1, %2, "u", movzx
+   562                              <1>     sasmMacroFuncE
+   563                              <1> %endmacro
+   564                              <1> 
+   565                              <1> 
+   566                              <1> %macro GET_CHAR 1.nolist
+   567                              <1>     sasmMacroFunc
+   568                              <1> 
+   569                              <1>     jmp %%after_data
+   570                              <1> section .data
+   571                              <1>     %%fmt db "%c", 0
+   572                              <1>     %%tmp dd 0
+   573                              <1>     %%read_tmp db 0
+   574                              <1> 
+   575                              <1> section .text
+   576                              <1> %%after_data:
+   577                              <1> 
+   578                              <1>     IS_GPR %1
+   579                              <1> 
+   580                              <1> %if %$is_reg = 1
+   581                              <1> ; register
+   582                              <1> 
+   583                              <1>     %ifidni %1, esp
+   584                              <1>         %error "Won't read to esp!" 
+   585                              <1>     %elifidni %1, sp
+   586                              <1>         %error "Won't read to sp!" 
+   587                              <1>     %elifidni %1, spl
+   588                              <1>         %error "Won't read to spl!" 
+   589                              <1>     %endif
+   590                              <1> 
+   591                              <1>     pushf
+   592                              <1>     push eax
+   593                              <1>     push ecx
+   594                              <1>     push edx
+   595                              <1> 
+   596                              <1>     ALIGN_STACK 8
+   597                              <1> ; we will have to do postprocessing after scanf
+   598                              <1>     push %%read_tmp
+   599                              <1> 
+   600                              <1> %elifid %1
+   601                              <1> ; variable (hope so)
+   602                              <1>     pushf
+   603                              <1>     push eax
+   604                              <1>     push ecx
+   605                              <1>     push edx
+   606                              <1> 
+   607                              <1>     ALIGN_STACK 8
+   608                              <1>     push %1
+   609                              <1>     
+   610                              <1> %elifnum %1
+   611                              <1>     %error "Incorrect parameter (number)"
+   612                              <1> %elifstr %1
+   613                              <1>     %error "Incorrect parameter (string)"
+   614                              <1> %else
+   615                              <1> ; may be, address expression?
+   616                              <1>     
+   617                              <1>     mov dword [%%tmp], eax    ; may use register esp, need to take care
+   618                              <1> 
+   619                              <1>     lea eax, %1
+   620                              <1> 
+   621                              <1>     pushf
+   622                              <1>     push dword [%%tmp] ; eax
+   623                              <1>     push ecx
+   624                              <1>     push edx
+   625                              <1> 
+   626                              <1>     ALIGN_STACK 8
+   627                              <1>     push eax
+   628                              <1> %endif
+   629                              <1> 
+   630                              <1>     push %%fmt
+   631                              <1>     call scanf
+   632                              <1>     UNALIGN_STACK
+   633                              <1> 
+   634                              <1>     pop edx
+   635                              <1>     pop ecx
+   636                              <1>     pop eax
+   637                              <1>     popf    
+   638                              <1> 
+   639                              <1> %if %$is_reg = 1
+   640                              <1> ; register postprocessing
+   641                              <1> 
+   642                              <1> %if %$reg_size = 1
+   643                              <1>     mov %1, byte [%%read_tmp]
+   644                              <1> %else ; zero extend bytes 1 -> 2, 1 -> 4
+   645                              <1>     movzx %1, byte [%%read_tmp]
+   646                              <1> %endif
+   647                              <1> 
+   648                              <1> %endif
+   649                              <1> 
+   650                              <1>     %pop ; IS_REG
+   651                              <1>     sasmMacroFuncE
+   652                              <1> %endmacro
+   653                              <1> 
+   654                              <1> 
+   655                              <1> %macro GET_STRING 2.nolist
+   656                              <1>     sasmMacroFunc
+   657                              <1> 
+   658                              <1>     IS_GPR %1
+   659                              <1> 
+   660                              <1> %if %$is_reg = 1
+   661                              <1>     %error "Incorrect 1st parameter (register)"
+   662                              <1> %endif
+   663                              <1>     
+   664                              <1> 
+   665                              <1>     %pop
+   666                              <1> 
+   667                              <1>     IS_GPR %2
+   668                              <1> 
+   669                              <1> %if %$is_reg = 1
+   670                              <1>     ;
+   671                              <1> %elifnum %2
+   672                              <1>     %if %2 <= 0
+   673                              <1>         %error "Second parameter must be positive"
+   674                              <1>     %endif
+   675                              <1> %else  
+   676                              <1>     %error "Second parameter must be numeric constant or register"
+   677                              <1> %endif
+   678                              <1> 
+   679                              <1>     %pop
+   680                              <1> 
+   681                              <1> %ifid %1
+   682                              <1> ; variable (hope so)
+   683                              <1>     push esi
+   684                              <1>     ;count
+   685                              <1>     IS_GPR %2
+   686                              <1>     %if %$is_reg = 1 
+   687                              <1>         %if %$reg_size = 1
+   688                              <1>             movzx esi, %2
+   689                              <1>         %elif %$reg_size = 2
+   690                              <1>             movzx esi, %2
+   691                              <1>         %else ; %$reg_size = 4
+   692                              <1>             mov esi, %2
+   693                              <1>         %endif
+   694                              <1>     %else
+   695                              <1>         mov esi, %2
+   696                              <1>     %endif
+   697                              <1>     %pop
+   698                              <1>     
+   699                              <1>     pushf
+   700                              <1>     push eax
+   701                              <1>     push ecx
+   702                              <1>     push edx
+   703                              <1>     ALIGN_STACK 0
+   704                              <1>     call get_stdin
+   705                              <1>     UNALIGN_STACK
+   706                              <1>     ALIGN_STACK 12
+   707                              <1>     push eax
+   708                              <1>     push esi ; count
+   709                              <1>     push %1
+   710                              <1> %elifnum %1
+   711                              <1>     %error "Incorrect 1st parameter (number)"
+   712                              <1> %elifstr %1
+   713                              <1>     %error "Incorrect 1st parameter (string)"
+   714                              <1> %else
+   715                              <1> ; may be, address expression?
+   716                              <1>     
+   717                              <1>     jmp %%after_data
+   718                              <1> section .data
+   719                              <1>     %%tmp dd 0
+   720                              <1> section .text
+   721                              <1> %%after_data:
+   722                              <1> 
+   723                              <1>     ; may use register esp, need to take care
+   724                              <1>     mov dword [%%tmp], edi
+   725                              <1>     lea edi, %1
+   726                              <1>     
+   727                              <1>     push esi
+   728                              <1>     ;count
+   729                              <1>     IS_GPR %2
+   730                              <1>     %if %$is_reg = 1 
+   731                              <1>         %if %$reg_size = 1
+   732                              <1>             movzx esi, %2
+   733                              <1>         %elif %$reg_size = 2
+   734                              <1>             movzx esi, %2
+   735                              <1>         %else ; %$reg_size = 4
+   736                              <1>             mov esi, %2
+   737                              <1>         %endif
+   738                              <1>     %else
+   739                              <1>         mov esi, %2
+   740                              <1>     %endif
+   741                              <1>     %pop
+   742                              <1> 
+   743                              <1>     pushf
+   744                              <1>     push eax
+   745                              <1>     push ecx
+   746                              <1>     push edx
+   747                              <1>     ALIGN_STACK 0
+   748                              <1>     call get_stdin
+   749                              <1>     UNALIGN_STACK
+   750                              <1>     ALIGN_STACK 12
+   751                              <1>     push eax    
+   752                              <1>     push esi ; count
+   753                              <1>     push edi
+   754                              <1>  
+   755                              <1>     mov edi, dword [%%tmp]
+   756                              <1> %endif
+   757                              <1> 
+   758                              <1>     call fgets
+   759                              <1>     UNALIGN_STACK
+   760                              <1> 
+   761                              <1>     pop edx
+   762                              <1>     pop ecx
+   763                              <1>     pop eax
+   764                              <1>     popf
+   765                              <1>     pop esi
+   766                              <1>     sasmMacroFuncE
+   767                              <1> %endmacro
+   768                              <1> %endif
+   769                              <1> 
+   770                                  
+   771                                  section .data
+   772 00000000 506C6561736520656E-     msg1: db 'Please enter a series of number: ', 0h
+   773 00000009 746572206120736572-
+   774 00000012 696573206F66206E75-
+   775 0000001B 6D6265723A2000     
+   776 00000022 54686520666962206E-     msg2: db 'The fib numbers are below..', 0h
+   777 0000002B 756D62657273206172-
+   778 00000034 652062656C6F772E2E-
+   779 0000003D 00                 
+   780 0000003E 00                      ctrf: db '', 0   ;换行
+   781                                  ;定义颜色
+   782 0000003F 1B5B33313B316D00        color_red: db 1Bh, '[31;1m', 0
+   783 00000047 1B5B33333B316D00        color_yellow: db 1Bh, '[33;1m', 0
+   784 0000004F 1B5B33343B316D00        color_blue: db  1Bh, '[34;1m', 0
+   785 00000057 1B5B33373B306D00        color_default:  db  1Bh, '[37;0m', 0
+   786 0000005F 0000                    inputs: dw 0   ;输入的数字序列
+   787                                  section .bss
+   788 00000000 <res 000000FF>          sinput: resb 255
+   789                                  ;保存大数
+   790 000000FF <res 000004B0>          n_2: resw 600
+   791 000005AF <res 000004B0>          n_1: resw 600
+   792 00000A5F <res 000003E8>          n  : resw 500
+   793                                  
+   794                                  section .text
+   795                                  global CMAIN:
+   796                                  CMAIN:
+   797                                  
+   798                                  ;------------------------------------------------------
+   799                                  ; 进行数据输入，将ASCII码转为数字，存放到inputs数字队列中
+   800                                  ; edx将存储输入的数字的个数
+   801                                  ; 每个数字占4个字节
+   802                                  ;------------------------------------------------------
+   803                                  
+   804                                      ; 输出提示语
+   805 00000000 B8[00000000]                mov eax, msg1
+   806 00000005 E821010000                  call sprint
+   807                                  
+   808                                      ; 输入数字串，用空格隔开，换行符结束
+   809 0000000A BAFF000000                  mov edx, 255
+   810 0000000F B9[00000000]                mov ecx, sinput
+   811 00000014 BB00000000                  mov ebx, 0
+   812 00000019 B803000000                  mov eax, 3
+   813 0000001E CD80                        int 80h
+   814                                  
+   815                                      ; 将输入的数字串转化为真正的数字
+   816 00000020 B8[00000000]                mov eax, sinput
+   817 00000025 89C6                        mov esi, eax ; 将字符串保存到esi寄存器中
+   818 00000027 B800000000                  mov eax, 0 ; 将eax初始化
+   819 0000002C B900000000                  mov ecx, 0 ; ecx作为esi寄存器中字符串的地址索引
+   820 00000031 BA00000000                  mov edx, 0 ; edx用于计算输入的数字有多少个，存放在栈中
+   821 00000036 BF00000000                  mov edi, 0 
+   822 0000003B 52                          push edx
+   823                                  
+   824                                  multiply_loop:
+   825                                  
+   826                                      ;将ebx各位置为0，并将下一个检验字符传给ebx的低八位bl
+   827 0000003C 31DB                        xor ebx, ebx	
+   828 0000003E 8A1C0E                      mov bl, [esi+ecx]
+   829                                  
+   830                                      ;若定位到的不是数字，则转到下一层判断
+   831 00000041 80FB30                      cmp bl, 48
+   832 00000044 7C14                        jl next_judge
+   833                                  
+   834 00000046 80FB39                      cmp bl, 57
+   835 00000049 7F0F                        jg next_judge
+   836                                      
+   837                                      ;核心转换部分
+   838 0000004B 80EB30                      sub bl, 48
+   839 0000004E 01D8                        add eax, ebx
+   840 00000050 BF0A000000                  mov edi, 10
+   841 00000055 F7E7                        mul edi
+   842                                  
+   843                                      ;索引+1
+   844 00000057 41                          inc ecx
+   845                                  
+   846 00000058 EBE2                        jmp multiply_loop
+   847                                  
+   848                                  next_judge:
+   849                                  
+   850                                      ;结果需要先除以10
+   851 0000005A 52                          push edx
+   852 0000005B 31D2                        xor edx, edx
+   853 0000005D BF0A000000                  mov edi, 10
+   854 00000062 F7F7                        div edi
+   855 00000064 5A                          pop edx
+   856                                      
+   857                                      ;存放数据，由于是dword，需要先将edx*4，再还原
+   858 00000065 5A                          pop edx
+   859 00000066 C1E202                      shl edx, 2
+   860 00000069 8982[5F000000]              mov [inputs+edx], eax
+   861 0000006F C1EA02                      shr edx, 2
+   862 00000072 52                          push edx
+   863                                  	
+   864                                      ;edx++		
+   865 00000073 5A                          pop edx		
+   866 00000074 41                          inc ecx	
+   867 00000075 42                          inc edx
+   868 00000076 52                          push edx
+   869                                  
+   870                                      ;重新初始化eax
+   871 00000077 B800000000                  mov eax, 0 
+   872                                  
+   873                                      ;如果这个字符是空格，继续下一个循环，如果是回车符则退出
+   874 0000007C 80FB20                      cmp bl, 32
+   875 0000007F 74BB                        je multiply_loop
+   876                                  
+   877                                  
+   878                                  
+   879                                  ;------------------------------------------------------
+   880                                  ; 将inputs里面的数字取出，计算其fib()值并输出
+   881                                  ; edx存储输入的数字的个数
+   882                                  ; 每个数字占4个字节
+   883                                  ;------------------------------------------------------
+   884                                  
+   885                                  
+   886                                      ;输出问候语
+   887 00000081 B8[22000000]                mov eax, msg2
+   888 00000086 E8A0000000                  call sprint
+   889                                  
+   890                                      ;循环输出各个数的fib值
+   891                                      ;初始化
+   892 0000008B B900000000                  mov ecx, 0
+   893                                      
+   894                                  output:
+   895 00000090 39D1                        cmp ecx, edx
+   896 00000092 741B                        je to_quit
+   897                                      
+   898                                      ;取出数据，由于是dword，需要先将ecx*4，再还原
+   899 00000094 51                          push ecx
+   900 00000095 C1E102                      shl ecx, 2
+   901 00000098 8B81[5F000000]              mov eax, dword [inputs+ecx]
+   902 0000009E C1E902                      shr ecx, 2
+   903 000000A1 59                          pop ecx
+   904                                      
+   905                                      ;选择颜色
+   906 000000A2 E822010000                  call select_color
+   907                                      
+   908                                      ;调用fib
+   909 000000A7 E81C000000                  call get_fib2
+   910                                      
+   911 000000AC 41                          inc ecx
+   912 000000AD EBE1                        jmp output
+   913                                      
+   914                                  to_quit:
+   915 000000AF E808010000                  call print_default
+   916 000000B4 E84F010000                  call quit
+   917                                      
+   918                                  ;-----------------------------------------------------------------------------------------------------------------------------
+   919                                  ;-----------------------------------------------------------方法--------------------------------------------------------------
+   920                                  ;-----------------------------------------------------------------------------------------------------------------------------
+   921                                      
+   922                                  ;-------------
+   923                                  ;获取字符串长度
+   924                                  ;-------------
+   925                                  slen:
+   926 000000B9 53                          push ebx
+   927 000000BA 89C3                        mov ebx, eax
+   928                                  
+   929                                  nextchar:
+   930 000000BC 803800                      cmp byte [eax], 0
+   931 000000BF 7403                        jz finished
+   932 000000C1 40                          inc eax
+   933 000000C2 EBF8                        jmp nextchar
+   934                                  
+   935                                  finished:
+   936 000000C4 29D8                        sub eax, ebx
+   937 000000C6 5B                          pop ebx
+   938 000000C7 C3                          ret
+   939                                  
+   940                                  
+   941                                  ;--------------------------------
+   942                                  ;计算一个输入的数的斐波那契值(大数版本)
+   943                                  ;--------------------------------
+   944                                  
+   945                                  get_fib2:
+   946                                  	
+   947 000000C8 53                          push ebx
+   948 000000C9 51                          push ecx
+   949 000000CA 52                          push edx
+   950                                  	
+   951                                      ;如果是0或1,返回1
+   952 000000CB 83F800                      cmp eax, 0
+   953 000000CE 7446                        je .is_zero_or_one
+   954 000000D0 83F801                      cmp eax, 1
+   955 000000D3 7441                        je .is_zero_or_one
+   956                                  
+   957                                      ;初始化
+   958 000000D5 E861020000                  call mkmem2
+   959 000000DA E881020000                  call mkmem1
+   960 000000DF E8A1020000                  call mkmem
+   961 000000E4 C705[03080000]0100-         mov [n_1+596], dword 1
+   962 000000EC 0000               
+   963 000000EE C705[53030000]0100-         mov [n_2+596], dword 1
+   964 000000F6 0000               
+   965                                      
+   966                                  
+   967                                  .continue:
+   968 000000F8 E818010000                  call addn2_n1
+   969                                      ;call printn
+   970 000000FD E86F010000                  call n_2ton_1
+   971 00000102 E898010000                  call nton_2
+   972 00000107 48                          dec eax
+   973 00000108 83F801                      cmp eax, 1
+   974 0000010B 75EB                        jne .continue
+   975                                  
+   976                                      ;返回结果
+   977 0000010D E8BB010000                  call printn
+   978 00000112 5A                          pop edx
+   979 00000113 59                          pop ecx
+   980 00000114 5B                          pop ebx
+   981 00000115 C3                          ret
+   982                                      
+   983                                      
+   984                                  
+   985                                  .is_zero_or_one:
+   986 00000116 50                          push eax
+   987 00000117 B801000000                  mov eax, 1
+   988 0000011C E85C000000                  call iprintLF
+   989 00000121 58                          pop eax
+   990 00000122 5A                          pop edx
+   991 00000123 59                          pop ecx
+   992 00000124 5B                          pop ebx
+   993 00000125 B801000000                  mov eax, 1
+   994 0000012A C3                          ret
+   995                                  
+   996                                  
+   997                                  
+   998                                  ;----------
+   999                                  ;打印字符串
+  1000                                  ;----------
+  1001                                  sprint:
+  1002                                      ; maybe eax missed?
+  1003 0000012B 52                          push edx
+  1004 0000012C 51                          push ecx
+  1005 0000012D 53                          push ebx
+  1006 0000012E 50                          push eax
+  1007 0000012F E885FFFFFF                  call slen
+  1008                                  
+  1009 00000134 89C2                        mov edx, eax
+  1010 00000136 58                          pop eax
+  1011                                      
+  1012 00000137 89C1                        mov ecx, eax
+  1013 00000139 BB01000000                  mov ebx, 1
+  1014 0000013E B804000000                  mov eax, 4
+  1015 00000143 CD80                        int 80h
+  1016                                  
+  1017 00000145 5B                          pop ebx
+  1018 00000146 59                          pop ecx
+  1019 00000147 5A                          pop edx
+  1020 00000148 C3                          ret
+  1021                                      
+  1022                                  
+  1023                                  ;--------
+  1024                                  ;打印数字
+  1025                                  ;--------
+  1026                                  iprint:
+  1027 00000149 50                          push eax
+  1028 0000014A 53                          push ebx
+  1029 0000014B 51                          push ecx
+  1030 0000014C 52                          push edx
+  1031 0000014D 56                          push esi
+  1032 0000014E B900000000                  mov ecx, 0
+  1033                                  
+  1034                                  divide_loop:
+  1035 00000153 41                          inc ecx
+  1036 00000154 BA00000000                  mov edx, 0
+  1037 00000159 BE0A000000                  mov esi, 10
+  1038 0000015E F7F6                        div esi
+  1039 00000160 83C230                      add edx, 48
+  1040 00000163 52                          push edx
+  1041 00000164 83F800                      cmp eax, 0
+  1042 00000167 75EA                        jnz divide_loop
+  1043                                  
+  1044                                  
+  1045                                  
+  1046                                  print_loop:
+  1047 00000169 49                          dec ecx
+  1048 0000016A 89E0                        mov eax, esp
+  1049 0000016C E8BAFFFFFF                  call sprint
+  1050 00000171 58                          pop eax
+  1051 00000172 83F900                      cmp ecx, 0
+  1052 00000175 75F2                        jnz print_loop
+  1053                                  	
+  1054 00000177 5E                          pop esi
+  1055 00000178 5A                          pop edx
+  1056 00000179 59                          pop ecx
+  1057 0000017A 5B                          pop ebx
+  1058 0000017B 58                          pop eax
+  1059 0000017C C3                          ret
+  1060                                  
+  1061                                  
+  1062                                  ;-------------
+  1063                                  ;打印数字并换行
+  1064                                  ;-------------
+  1065                                  iprintLF:
+  1066 0000017D E8C7FFFFFF                  call iprint
+  1067 00000182 53                          push ebx
+  1068 00000183 50                          push eax
+  1069 00000184 B80A000000                  mov eax, 0Ah
+  1070 00000189 50                          push eax
+  1071 0000018A 89E0                        mov eax, esp
+  1072 0000018C E89AFFFFFF                  call sprint
+  1073 00000191 58                          pop eax
+  1074 00000192 58                          pop eax
+  1075 00000193 5B                          pop ebx
+  1076 00000194 C3                          ret
+  1077                                  
+  1078                                  
+  1079                                  ;--------
+  1080                                  ;选择蓝色
+  1081                                  ;--------
+  1082                                  print_blue:
+  1083 00000195 50                      	push eax
+  1084 00000196 B8[4F000000]            	mov eax, color_blue
+  1085 0000019B E88BFFFFFF              	call sprint
+  1086 000001A0 58                      	pop eax
+  1087 000001A1 C3                      	ret
+  1088                                  
+  1089                                  ;--------
+  1090                                  ;选择红色
+  1091                                  ;--------
+  1092                                  print_red:
+  1093 000001A2 50                      	push eax
+  1094 000001A3 B8[3F000000]            	mov eax, color_red
+  1095 000001A8 E87EFFFFFF              	call sprint
+  1096 000001AD 58                      	pop eax
+  1097 000001AE C3                      	ret
+  1098                                  
+  1099                                  ;--------
+  1100                                  ;选择黄色
+  1101                                  ;--------
+  1102                                  print_yellow:
+  1103 000001AF 50                      	push eax
+  1104 000001B0 B8[47000000]            	mov eax, color_yellow
+  1105 000001B5 E871FFFFFF              	call sprint
+  1106 000001BA 58                      	pop eax
+  1107 000001BB C3                      	ret
+  1108                                  
+  1109                                  ;---------
+  1110                                  ;选择标准色
+  1111                                  ;---------
+  1112                                  print_default:
+  1113 000001BC 50                      	push eax
+  1114 000001BD B8[57000000]            	mov eax, color_default
+  1115 000001C2 E864FFFFFF              	call sprint
+  1116 000001C7 58                      	pop eax
+  1117 000001C8 C3                      	ret
+  1118                                  
+  1119                                  ;---------
+  1120                                  ;选择颜色
+  1121                                  ;---------
+  1122                                  select_color:
+  1123 000001C9 83F900                  	cmp ecx, 0
+  1124 000001CC 7428                    	je .red
+  1125 000001CE 83F901                  	cmp ecx, 1
+  1126 000001D1 7429                    	je .blue
+  1127 000001D3 83F902                  	cmp ecx, 2
+  1128 000001D6 742A                    	je .yellow
+  1129 000001D8 83F903                          cmp ecx, 3
+  1130 000001DB 7419                    	je .red
+  1131 000001DD 83F904                  	cmp ecx, 4
+  1132 000001E0 741A                    	je .blue
+  1133 000001E2 83F905                  	cmp ecx, 5
+  1134 000001E5 741B                    	je .yellow
+  1135 000001E7 83F906                          cmp ecx, 6
+  1136 000001EA 740A                    	je .red
+  1137 000001EC 83F907                  	cmp ecx, 7
+  1138 000001EF 740B                    	je .blue
+  1139 000001F1 83F908                  	cmp ecx, 8
+  1140 000001F4 740C                    	je .yellow
+  1141                                  .red:
+  1142 000001F6 E8A7FFFFFF              	call print_red
+  1143 000001FB C3                      	ret
+  1144                                  
+  1145                                  .blue:
+  1146 000001FC E894FFFFFF              	call print_blue
+  1147 00000201 C3                      	ret
+  1148                                  .yellow:
+  1149 00000202 E8A8FFFFFF              	call print_yellow
+  1150 00000207 C3                      	ret
+  1151                                  
+  1152                                  
+  1153                                  
+  1154                                  
+  1155                                  ;-------------
+  1156                                  ;退出
+  1157                                  ;-------------
+  1158                                  quit:
+  1159 00000208 BB00000000                  mov ebx, 0
+  1160 0000020D B801000000                  mov eax, 1
+  1161 00000212 CD80                        int 80h
+  1162 00000214 C3                          ret    
+  1163                                      
+  1164                                  ;-----------------------------------------------------------------------------------------
+  1165                                  ;----------------------------------------大数的方法----------------------------------------
+  1166                                  ;-----------------------------------------------------------------------------------------
+  1167                                  
+  1168                                  ;------------------------------
+  1169                                  ;将n_2和n_1相加，存到n里面
+  1170                                  ;------------------------------
+  1171                                  addn2_n1:
+  1172 00000215 50                          push eax
+  1173 00000216 53                          push ebx
+  1174 00000217 51                          push ecx
+  1175 00000218 52                          push edx
+  1176                                     
+  1177                                      ;初始化
+  1178 00000219 31C9                        xor ecx, ecx ;保存进位
+  1179 0000021B B900000000                  mov ecx, 0
+  1180 00000220 BA80030000                  mov edx, 896
+  1181 00000225 E85B010000                  call mkmem
+  1182                                  
+  1183                                  .add:
+  1184 0000022A 31C0                        xor eax, eax
+  1185 0000022C 31DB                        xor ebx, ebx
+  1186                                      
+  1187 0000022E 8B82[FF000000]              mov eax, [n_2+edx]
+  1188 00000234 8B9A[AF050000]              mov ebx, [n_1+edx]
+  1189 0000023A 01D8                        add eax, ebx
+  1190 0000023C 01C8                        add eax, ecx
+  1191                                      
+  1192 0000023E 3D00CA9A3B                  cmp eax, 1000000000
+  1193 00000243 7F0D                        jg .carry
+  1194                                      
+  1195 00000245 8982[5F0A0000]              mov [n+edx], eax
+  1196 0000024B B900000000                  mov ecx, 0
+  1197 00000250 EB10                        jmp .next
+  1198                                      
+  1199                                  .carry:
+  1200 00000252 2D00CA9A3B                  sub eax, 1000000000
+  1201 00000257 8982[5F0A0000]              mov [n+edx], eax
+  1202 0000025D B901000000                  mov ecx, 1
+  1203                                      
+  1204                                    
+  1205                                  .next:
+  1206 00000262 83EA04                      sub edx, 4
+  1207 00000265 83FAFC                      cmp edx, -4
+  1208 00000268 7402                        je .add_finished
+  1209 0000026A EBBE                        jmp .add
+  1210                                  
+  1211                                  
+  1212                                  .add_finished: 
+  1213 0000026C 5A                          pop edx
+  1214 0000026D 59                          pop ecx
+  1215 0000026E 5B                          pop ebx
+  1216 0000026F 58                          pop eax
+  1217 00000270 C3                          ret
+  1218                                  
+  1219                                  
+  1220                                  ;------------------------------
+  1221                                  ;将n_2的值复制到n_1
+  1222                                  ;------------------------------
+  1223                                  n_2ton_1:
+  1224 00000271 50                          push eax
+  1225 00000272 51                          push ecx
+  1226 00000273 B900000000                  mov ecx, 0
+  1227 00000278 E8E3000000                  call mkmem1
+  1228                                      
+  1229                                  .to:
+  1230 0000027D 51                          push ecx
+  1231 0000027E C1E102                      shl ecx, 2
+  1232 00000281 8B81[FF000000]              mov eax, [n_2+ecx]
+  1233 00000287 8981[AF050000]              mov [n_1+ecx], eax
+  1234 0000028D C1E902                      shr ecx, 2
+  1235 00000290 59                          pop ecx
+  1236                                      
+  1237 00000291 41                          inc ecx
+  1238 00000292 81F92C010000                cmp ecx, 300
+  1239 00000298 7402                        je .to_finished
+  1240 0000029A EBE1                        jmp .to
+  1241                                  
+  1242                                  .to_finished:
+  1243 0000029C 59                          pop ecx
+  1244 0000029D 58                          pop eax
+  1245 0000029E C3                          ret
+  1246                                      
+  1247                                      
+  1248                                  ;------------------------------
+  1249                                  ;将n的值复制到n_2
+  1250                                  ;------------------------------
+  1251                                  nton_2:
+  1252 0000029F 50                          push eax
+  1253 000002A0 51                          push ecx
+  1254 000002A1 B900000000                  mov ecx, 0
+  1255 000002A6 E890000000                  call mkmem2
+  1256                                      
+  1257                                  .to:
+  1258 000002AB 51                          push ecx
+  1259 000002AC C1E102                      shl ecx, 2
+  1260 000002AF 8B81[5F0A0000]              mov eax, [n+ecx]
+  1261 000002B5 8981[FF000000]              mov [n_2+ecx], eax
+  1262 000002BB C1E902                      shr ecx, 2
+  1263 000002BE 59                          pop ecx
+  1264                                      
+  1265 000002BF 41                          inc ecx
+  1266 000002C0 81F92C010000                cmp ecx, 300
+  1267 000002C6 7402                        je .to_finished
+  1268 000002C8 EBE1                        jmp .to
+  1269                                  
+  1270                                  .to_finished:
+  1271 000002CA 59                          pop ecx
+  1272 000002CB 58                          pop eax
+  1273 000002CC C3                          ret
+  1274                                  
+  1275                                  ;------------------------------
+  1276                                  ;print出n的值
+  1277                                  ;------------------------------
+  1278                                  printn:
+  1279 000002CD 50                          push eax
+  1280 000002CE 53                          push ebx
+  1281 000002CF 51                          push ecx
+  1282                                      
+  1283 000002D0 31DB                        xor ebx, ebx ;flag
+  1284 000002D2 BB00000000                  mov ebx, 0
+  1285 000002D7 B900000000                  mov ecx, 0
+  1286                                      
+  1287                                  .print:
+  1288                                      ;将内存块特定区域打印出来
+  1289 000002DC 51                          push ecx
+  1290 000002DD C1E102                      shl ecx, 2
+  1291 000002E0 8B81[5F0A0000]              mov eax, [n+ecx]
+  1292 000002E6 C1E902                      shr ecx, 2
+  1293 000002E9 59                          pop ecx
+  1294                                      
+  1295 000002EA 83F800                      cmp eax, 0
+  1296 000002ED 7431                        je .next
+  1297                                      
+  1298                                      ;增加0的个数
+  1299 000002EF 50                          push eax
+  1300 000002F0 51                          push ecx
+  1301 000002F1 E8B4000000                  call cal_num_bit
+  1302 000002F6 B909000000                  mov ecx, 9
+  1303 000002FB 29C1                        sub ecx, eax
+  1304                                  
+  1305                                  .print_zero:    
+  1306 000002FD 83F900                      cmp ecx, 0
+  1307 00000300 7412                        je .print_num
+  1308 00000302 83FB00                      cmp ebx, 0
+  1309 00000305 740D                        je .print_num
+  1310 00000307 B800000000                  mov eax, 0
+  1311 0000030C E838FEFFFF                  call iprint
+  1312 00000311 49                          dec ecx
+  1313 00000312 EBE9                        jmp .print_zero
+  1314                                  
+  1315                                  .print_num:
+  1316 00000314 BB01000000                  mov ebx, 1
+  1317 00000319 59                          pop ecx
+  1318 0000031A 58                          pop eax        
+  1319                                         
+  1320 0000031B E829FEFFFF                  call iprint
+  1321                                      
+  1322                                  .next:      
+  1323 00000320 41                          inc ecx
+  1324 00000321 81F92C010000                cmp ecx, 300
+  1325 00000327 7402                        je .print_finished
+  1326 00000329 EBB1                        jmp .print
+  1327                                  
+  1328                                  .print_finished:
+  1329 0000032B 50                          push eax
+  1330 0000032C B8[3E000000]                mov eax, ctrf
+  1331 00000331 E8F5FDFFFF                  call sprint
+  1332 00000336 58                          pop eax
+  1333 00000337 59                          pop ecx
+  1334 00000338 5B                          pop ebx
+  1335 00000339 58                          pop eax
+  1336 0000033A C3                          ret
+  1337                                  
+  1338                                  ;--------------
+  1339                                  ;将n_2内存块置0
+  1340                                  ;--------------
+  1341                                  mkmem2:
+  1342 0000033B 50                          push eax
+  1343 0000033C 51                          push ecx
+  1344 0000033D 31C0                        xor eax, eax
+  1345 0000033F B900000000                  mov ecx, 0
+  1346                                  
+  1347                                  .mking
+  1348                                      ;将内存块特定区域置0
+  1349 00000344 51                          push ecx
+  1350 00000345 C1E102                      shl ecx, 2
+  1351 00000348 8981[FF000000]              mov [n_2+ecx], eax
+  1352 0000034E C1E902                      shr ecx, 2
+  1353 00000351 59                          pop ecx
+  1354                                      
+  1355 00000352 41                          inc ecx
+  1356 00000353 81F92C010000                cmp ecx, 300
+  1357 00000359 7402                        je .mkfinished
+  1358 0000035B EBE7                        jmp .mking
+  1359                                      
+  1360                                  .mkfinished
+  1361 0000035D 59                          pop ecx
+  1362 0000035E 58                          pop eax
+  1363 0000035F C3                          ret
+  1364                                  
+  1365                                  ;--------------
+  1366                                  ;将n_内存块置0
+  1367                                  ;--------------
+  1368                                  mkmem1:
+  1369 00000360 50                          push eax
+  1370 00000361 51                          push ecx
+  1371 00000362 31C0                        xor eax, eax
+  1372 00000364 B900000000                  mov ecx, 0
+  1373                                  
+  1374                                  .mking
+  1375                                      
+  1376                                      ;将内存块特定区域置0
+  1377 00000369 51                          push ecx
+  1378 0000036A C1E102                      shl ecx, 2
+  1379 0000036D 8981[AF050000]              mov [n_1+ecx], eax
+  1380 00000373 C1E902                      shr ecx, 2
+  1381 00000376 59                          pop ecx
+  1382                                      
+  1383 00000377 41                          inc ecx
+  1384 00000378 81F92C010000                cmp ecx, 300
+  1385 0000037E 7402                        je .mkfinished
+  1386 00000380 EBE7                        jmp .mking
+  1387                                      
+  1388                                  .mkfinished
+  1389 00000382 59                          pop ecx
+  1390 00000383 58                          pop eax
+  1391 00000384 C3                          ret
+  1392                                  
+  1393                                  ;--------------
+  1394                                  ;将n内存块置0
+  1395                                  ;--------------
+  1396                                  mkmem:
+  1397 00000385 50                          push eax
+  1398 00000386 51                          push ecx
+  1399 00000387 31C0                        xor eax, eax
+  1400 00000389 B900000000                  mov ecx, 0
+  1401                                  
+  1402                                  .mking
+  1403                                      
+  1404                                      ;将内存块特定区域置0
+  1405 0000038E 51                          push ecx
+  1406 0000038F C1E102                      shl ecx, 2
+  1407 00000392 8981[5F0A0000]              mov [n+ecx], eax
+  1408 00000398 C1E902                      shr ecx, 2
+  1409 0000039B 59                          pop ecx
+  1410                                      
+  1411 0000039C 41                          inc ecx
+  1412 0000039D 81F92C010000                cmp ecx, 300
+  1413 000003A3 7402                        je .mkfinished
+  1414 000003A5 EBE7                        jmp .mking
+  1415                                      
+  1416                                  .mkfinished
+  1417 000003A7 59                          pop ecx
+  1418 000003A8 58                          pop eax
+  1419 000003A9 C3                          ret
+  1420                                      
+  1421                                      
+  1422                                  ;--------------
+  1423                                  ;计算位数
+  1424                                  ;--------------
+  1425                                  cal_num_bit: 
+  1426 000003AA 53                          push ebx
+  1427 000003AB 51                          push ecx
+  1428 000003AC 52                          push edx
+  1429 000003AD 57                          push edi
+  1430                                      ;初始化
+  1431 000003AE 31C9                        xor ecx, ecx
+  1432 000003B0 31DB                        xor ebx, ebx
+  1433 000003B2 31D2                        xor edx, edx
+  1434 000003B4 89C7                        mov edi, eax
+  1435 000003B6 B901000000                  mov ecx, 1
+  1436                                  
+  1437                                  .divtenloop:
+  1438 000003BB 31D2                        xor edx, edx
+  1439 000003BD BB0A000000                  mov ebx, 10
+  1440 000003C2 F7F3                        div ebx
+  1441 000003C4 83F800                      cmp eax, 0
+  1442 000003C7 7403                        je .finished
+  1443 000003C9 41                          inc ecx
+  1444 000003CA EBEF                        jmp .divtenloop
+  1445                                      
+  1446                                  .finished:
+  1447 000003CC 89C8                        mov eax, ecx
+  1448 000003CE 5F                          pop edi
+  1449 000003CF 5A                          pop edx
+  1450 000003D0 59                          pop ecx
+  1451 000003D1 5B                          pop ebx
+  1452 000003D2 C3                          ret
+  1453                                      
+  1454                                   

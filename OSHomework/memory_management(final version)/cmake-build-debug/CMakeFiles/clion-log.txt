@@ -1,0 +1,4 @@
+"E:\Program Files\JetBrains\CLion 2017.1.1\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "F:\OneDrive - smail.nju.edu.cn\Workspace\Cpp-workspace\memory_management"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: F:/OneDrive - smail.nju.edu.cn/Workspace/Cpp-workspace/memory_management/cmake-build-debug
