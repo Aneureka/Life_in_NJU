@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[uCOSII.dsp]
+SCC_Aux_Path = "\\Server01\Micrium\MicriumVSS"
+SCC_Project_Name = "$/MICRIUM/SOFTWARE/EvalBoards/Microsoft/Windows XP/Visual Studio 6/Ex1-OS", KQIBAAAA

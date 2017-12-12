@@ -1,0 +1,79 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: uCOSII - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Hiki\AppData\Local\Temp\RSPF55.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /I ".\\" /I ".\Source\\" /I ".\Ports\Win32\\" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\uCOS-II\main.c"
+"C:\uCOS-II\Source\os_dbg_r.c"
+"C:\uCOS-II\Source\ucos_ii.c"
+"C:\uCOS-II\Ports\WIN32\os_cpu_c.c"
+"C:\uCOS-II\Ports\WIN32\os_trace.c"
+"C:\uCOS-II\Source\os_mem.c"
+]
+Creating command line "cl.exe @C:\Users\Hiki\AppData\Local\Temp\RSPF55.tmp" 
+Creating temporary file "C:\Users\Hiki\AppData\Local\Temp\RSPF56.tmp" with contents
+[
+WinMM.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/uCOSII.pdb" /debug /machine:I386 /out:"Debug/uCOSII.exe" /pdbtype:sept 
+".\Debug\main.obj"
+".\Debug\os_dbg_r.obj"
+".\Debug\ucos_ii.obj"
+".\Debug\os_cpu_c.obj"
+".\Debug\os_trace.obj"
+".\Debug\os_mem.obj"
+]
+Creating command line "link.exe @C:\Users\Hiki\AppData\Local\Temp\RSPF56.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.c
+c:\ucos-ii\main.c(231) : warning C4101: 'to_delay' : unreferenced local variable
+c:\ucos-ii\main.c(243) : warning C4101: 'to_delay' : unreferenced local variable
+c:\ucos-ii\main.c(255) : warning C4101: 'to_delay' : unreferenced local variable
+c:\ucos-ii\main.c(267) : warning C4101: 'to_delay' : unreferenced local variable
+c:\ucos-ii\main.c(279) : warning C4101: 'to_delay' : unreferenced local variable
+os_dbg_r.c
+ucos_ii.c
+c:\ucos-ii\source\os_core.c(596) : error C2275: 'EDF_TASK_DATA' : illegal use of this type as an expression
+        c:\ucos-ii\source\ucos_ii.h(49) : see declaration of 'EDF_TASK_DATA'
+c:\ucos-ii\source\os_core.c(596) : error C2065: 'tempPoint' : undeclared identifier
+c:\ucos-ii\source\os_core.c(597) : error C2223: left of '->compTime' must point to struct/union
+c:\ucos-ii\source\os_core.c(598) : error C2223: left of '->compTime' must point to struct/union
+c:\ucos-ii\source\os_core.c(601) : error C2223: left of '->end' must point to struct/union
+c:\ucos-ii\source\os_core.c(602) : error C2143: syntax error : missing ';' before 'type'
+c:\ucos-ii\source\os_core.c(603) : error C2143: syntax error : missing ';' before 'type'
+c:\ucos-ii\source\os_core.c(604) : error C2065: 'toDelay' : undeclared identifier
+c:\ucos-ii\source\os_core.c(608) : error C2223: left of '->start' must point to struct/union
+c:\ucos-ii\source\os_core.c(608) : error C2223: left of '->start' must point to struct/union
+c:\ucos-ii\source\os_core.c(608) : error C2065: 't' : undeclared identifier
+c:\ucos-ii\source\os_core.c(611) : error C2223: left of '->ddl' must point to struct/union
+c:\ucos-ii\source\os_core.c(611) : error C2223: left of '->ddl' must point to struct/union
+c:\ucos-ii\source\os_core.c(611) : error C2223: left of '->p' must point to struct/union
+c:\ucos-ii\source\os_core.c(612) : error C2223: left of '->compTime' must point to struct/union
+c:\ucos-ii\source\os_core.c(612) : error C2223: left of '->c' must point to struct/union
+c:\ucos-ii\source\os_core.c(632) : error C2061: syntax error : identifier 'OSVersion'
+c:\ucos-ii\source\os_core.c(632) : error C2059: syntax error : ';'
+c:\ucos-ii\source\os_core.c(632) : error C2059: syntax error : 'type'
+c:\ucos-ii\source\os_core.c(1289) : error C2065: 'OS_TASK_IDLE_PRIO' : undeclared identifier
+c:\ucos-ii\source\os_core.c(1311) : error C2143: syntax error : missing ';' before 'type'
+c:\ucos-ii\source\os_core.c(1312) : error C2065: 'nextTaskID' : undeclared identifier
+os_cpu_c.c
+os_trace.c
+os_mem.c
+Generating Code...
+Ö´ÐÐ cl.exe Ê±³ö´í.
+Creating command line "bscmake.exe /nologo /o"Debug/uCOSII.bsc"  ".\Debug\main.sbr" ".\Debug\os_dbg_r.sbr" ".\Debug\ucos_ii.sbr" ".\Debug\os_cpu_c.sbr" ".\Debug\os_trace.sbr" ".\Debug\os_mem.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+uCOSII.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

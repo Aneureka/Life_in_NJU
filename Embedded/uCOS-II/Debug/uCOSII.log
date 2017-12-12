@@ -1,0 +1,34 @@
+﻿Build started 2017/12/7 0:01:16.
+     1>Project "C:\uCOS-II\uCOSII.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I.\ /I.\Source\ /I.\Ports\Win32\ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc120.pdb" /FR".\Debug\\" /Gd /TC /analyze- /errorReport:prompt Ports\WIN32\os_cpu_c.c Ports\WIN32\os_trace.c Source\os_dbg_r.c Source\ucos_ii.c main.c
+         main.c
+     1>c:\ucos-ii\ports\win32\os_cpu.h(45): warning C4005: '_WIN32_WINNT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h(200) : see previous definition of '_WIN32_WINNT'
+         ucos_ii.c
+     1>c:\ucos-ii\ports\win32\os_cpu.h(45): warning C4005: '_WIN32_WINNT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h(200) : see previous definition of '_WIN32_WINNT'
+         os_dbg_r.c
+     1>c:\ucos-ii\ports\win32\os_cpu.h(45): warning C4005: '_WIN32_WINNT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h(200) : see previous definition of '_WIN32_WINNT'
+         os_trace.c
+     1>c:\ucos-ii\ports\win32\os_cpu.h(45): warning C4005: '_WIN32_WINNT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h(200) : see previous definition of '_WIN32_WINNT'
+         os_cpu_c.c
+     1>c:\ucos-ii\ports\win32\os_cpu.h(45): warning C4005: '_WIN32_WINNT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.1\include\shared\sdkddkver.h(200) : see previous definition of '_WIN32_WINNT'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\uCOSII.exe" /INCREMENTAL /NOLOGO WinMM.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\uCOSII.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\uCOSII.lib" /MACHINE:X86 /SAFESEH .\Debug\main.obj
+         .\Debug\os_cpu_c.obj
+         .\Debug\os_trace.obj
+         .\Debug\os_dbg_r.obj
+         .\Debug\ucos_ii.obj
+         uCOSII.vcxproj -> C:\uCOS-II\.\Debug\uCOSII.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o".\Debug\uCOSII.bsc" .\Debug\main.sbr .\Debug\os_cpu_c.sbr .\Debug\os_trace.sbr .\Debug\os_dbg_r.sbr .\Debug\ucos_ii.sbr
+     1>Done Building Project "C:\uCOS-II\uCOSII.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.69
