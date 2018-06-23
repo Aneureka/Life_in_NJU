@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link href="../css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<form class="form-horizontal" role="form" id="publishForm">
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="name">课程名称</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="name" type="text" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="description">简要描述</label>
+        <div class="col-sm-3">
+            <textarea class="form-control" id="description" type="text"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="price">价格</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="price" type="text" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="start">开始日期</label>
+        <div class="date col-sm-3 datepicker" data-provide="datepicker">
+            <input type="text" class="form-control" id="start" required>
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="start">结束日期</label>
+        <div class="date col-sm-3 datepicker" data-provide="datepicker">
+            <input type="text" class="form-control" id="end" required>
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="timePlan">时间安排</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="timePlan" type="text" required/>
+        </div>
+    </div>
+    <div class="form-group" id="classes">
+        <label class="col-sm-1 control-label">教室</label>
+        <div class="col-sm-1">
+            <input class="form-control teacher" type="text" placeholder="老师"/>
+        </div>
+        <div class="col-sm-1">
+            <input class="form-control capacity" type="text" placeholder="容纳人数"/>
+        </div>
+        <button type="button" class="btn btn-primary" id="add">+</button>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="publish">发布课程</button>
+        </div>
+    </div>
+</form>
+
+<script src="../js/util.js"></script>
+<script src="../js/validator.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/bootstrap-datepicker.zh-CN.js"></script>
+
+<script>
+
+    checkInstituteLogin();
+    $('#instituteName').text(window.localStorage.getItem('instituteName'));
+
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: 'today',
+        autoclose: true,
+        clearBtn: true,
+        calendarWeeks: true,
+        todayHighlight: true,
+        language: 'zh-CN'
+    });
+
+
+    $().ready(() => {
+
+        $('#add').click(function () {
+            $(this).before(
+                '<div class="col-sm-1">\n' +
+                '    <input class="form-control teacher" type="text" placeholder="老师"/>\n' +
+                '</div>\n' +
+                '<div class="col-sm-1">\n' +
+                '    <input class="form-control capacity" type="text" placeholder="容纳人数"/>\n' +
+                '</div>');
+        });
+
+        $('#publishForm').on('click', '#publish', function () {
+
+            let name = $('#name').val();
+            let description = $('#description').val();
+            let price = $('#price').val();
+            let start = $('#start').val();
+            let end = $('#end').val();
+            let timePlan = $('#timePlan').val();
+            let classes = [];
+
+            let teachers = [];
+            let capacities = [];
+            $.each($('#classes').find('.teacher'), (seq, t) => {
+                teachers.push(t.value);
+            });
+            $.each($('#classes').find('.capacity'), (seq, c) => {
+                capacities.push(c.value);
+            });
+            for (let i = 0; i < teachers.length; i++) {
+                classes.push({teacher: teachers[i], capacity: capacities[i]});
+            }
+
+            if (validator.isEmpty(name)) {
+                alert('姓名不能为空！');
+                return;
+            }
+
+            if (isNaN(price)) {
+                alert('价格必须为数字！');
+                return;
+            }
+
+            if (validator.isEmpty(start) || validator.isEmpty(end)) {
+                alert('日期不能为空！');
+                return;
+            }
+
+            if (validator.isEmpty(timePlan)) {
+                alert('时间安排不能为空！');
+                return;
+            }
+
+            if (classes.length === 0) {
+                alert('至少添加一个教室！');
+                return;
+            }
+
+            let d = JSON.stringify({
+                name: name,
+                description: description,
+                price: price,
+                start: start,
+                end: end,
+                timePlan: timePlan,
+                classes: classes
+            });
+
+            console.log(d);
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/trainings',
+                data: d,
+                success: () => {
+                    alert('发布课程成功！');
+                    window.location.href = 'home.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType:"json"
+            })
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/institutes/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        });
+
+    })
+
+
+</script>
+
+</body>
+</html>

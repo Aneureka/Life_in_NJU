@@ -1,0 +1,6 @@
+who：郭浩滨 林志和 吴游杰 吴志成
+when：第三周周五晚上
+what：进行系统测试
+where：机房
+how long：2.5h
+arrived solutions：完成测试报告并修复发现的bug

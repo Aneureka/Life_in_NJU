@@ -1,0 +1,9 @@
+"C:\Program Files\JetBrains\CLion 2017.2\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" "D:\Onedrive\OneDrive - smail.nju.edu.cn\Projects\EmbeddedCar"
+CMake Error at CMakeLists.txt:6 (add_library):
+  The target name "./libGPIO.a" is reserved or not valid for certain CMake
+  features, such as generator expressions, and may result in undefined
+  behavior.
+
+
+-- Configuring incomplete, errors occurred!
+See also "D:/Onedrive/OneDrive - smail.nju.edu.cn/Projects/EmbeddedCar/cmake-build-default/CMakeFiles/CMakeOutput.log".

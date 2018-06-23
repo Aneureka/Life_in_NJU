@@ -1,0 +1,5 @@
+who : 吴游杰
+when: 第四周
+what: 迭代二的需求规格文档。
+problem : 无
+todo : 界面设计以及实现。

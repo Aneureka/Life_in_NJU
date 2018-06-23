@@ -1,0 +1,10 @@
+who : 林志和
+when: 第五周
+what: 理解回测结果指标
+when：第六-七周
+what：实现回测结果指标计算、回测系统数据层
+when：第八周
+what：优化回测系统数据层
+
+problem : 回测效率不是很高
+todo : 学习Spring，Hibernate框架

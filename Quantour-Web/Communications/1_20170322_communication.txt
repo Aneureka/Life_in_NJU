@@ -1,0 +1,6 @@
+who：郭浩滨 林志和 吴游杰 吴志成
+when：第四周周三晚上
+what：需求评审，对如何实现需求进行大致的讨论
+where：图书馆研讨间
+how long：2h
+arrived solutions：完善用例文档，解决需求规格的部分问题

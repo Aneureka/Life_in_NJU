@@ -1,0 +1,27 @@
+{
+  "entry": "src/index.js",
+  "theme": {
+       "@primary-color": "#3db8c1"
+     },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080/api/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
+  },
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": "true" }]
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-runtime"
+      ]
+    }
+  }
+}

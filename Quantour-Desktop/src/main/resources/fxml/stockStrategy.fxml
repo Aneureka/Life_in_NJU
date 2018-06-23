@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1350.0" styleClass="all-background-panel" stylesheets="@../css/main.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.StockStrategyController">
+    <children>
+        <ScrollPane hbarPolicy="NEVER" prefHeight="840.0" prefWidth="1350.0" styleClass="content-scrollpane">
+            <content>
+                <VBox prefWidth="1350.0" styleClass="content-vbox">
+               <children>
+                  <Pane fx:id="makePane" maxWidth="-Infinity" prefHeight="450.0" prefWidth="1200.0" styleClass="content-panel">
+                     <children>
+                        <Pane layoutX="40.0" layoutY="160.0">
+                           <children>
+                              <ComboBox fx:id="generateBox" layoutX="98.0" layoutY="82.0" prefWidth="110.0" promptText="5" visible="false" />
+                              <TextField fx:id="generateField" alignment="CENTER" layoutX="100.0" layoutY="83.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" text="5" />
+                              <Separator layoutY="50.0" prefWidth="1120.0" styleClass="separator-child" />
+                              <Label id="sliderPicLabel" fx:id="sliderStrategyLabel" layoutY="49.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="140.0" />
+                              <GridPane hgap="10.0" layoutY="132.0" vgap="15.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="起始资金：" GridPane.rowIndex="1" />
+                                    <TextField fx:id="initialFundField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" text="100000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="holdField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="110.0" text="10" GridPane.columnIndex="1" />
+                                    <Label text="持有期：" />
+                                    <Label text="天" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="125.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="元" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="125.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                              <HBox>
+                                 <children>
+                                    <Button fx:id="momentumBtn" layoutX="217.0" layoutY="73.0" mnemonicParsing="false" onAction="#showMomentum" prefHeight="50.0" prefWidth="140.0" styleClass="tab-btn" text="动量策略" />
+                                    <Button fx:id="averageBtn" layoutX="306.0" layoutY="83.0" mnemonicParsing="false" onAction="#showAverage" prefHeight="50.0" prefWidth="140.0" styleClass="tab-btn" text="均值回归" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutY="234.0" prefHeight="30.0" spacing="10.0">
+                                 <children>
+                                    <Label layoutX="536.0" layoutY="139.0" text="回测时间：" />
+                                    <DatePicker fx:id="strategyStartDatePick" layoutX="641.0" layoutY="136.0" prefHeight="30.0" prefWidth="150.0" promptText="2016-12-12" />
+                                    <Label text="-" />
+                                    <DatePicker fx:id="strategyEndDatePick" layoutX="817.0" layoutY="136.0" prefWidth="150.0" promptText="2017-12-12">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </DatePicker>
+                                    <Label text="收益基准：">
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ComboBox fx:id="incomeStandardComb" prefWidth="150.0" promptText="沪深300" />
+                                    <Button mnemonicParsing="false" onAction="#showResult" styleClass="check-btn" text="开始回测">
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Label fx:id="warningLabel" styleClass="warning-label" text="Label" visible="false">
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="strategyTipLabel" styleClass="stock-increase" text="Label" visible="false">
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label layoutY="86.0" text="形成期：" />
+                              <Label layoutX="225.0" layoutY="86.0" text="天" />
+                           </children>
+                        </Pane>
+                        <Separator layoutY="70.0" prefWidth="1200.0" />
+                        <Label layoutX="90.0" layoutY="19.0" styleClass="content-title" text="制定策略" />
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="40.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/strategy.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="40.0" layoutY="90.0" text="股票池：" />
+                        <MenuButton fx:id="stockPoolComb" contentDisplay="CENTER" layoutX="138.0" layoutY="84.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" text="全部股票">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#chooseAll" text="全部股票" />
+                              <Menu fx:id="boardMenu" mnemonicParsing="false" text="板块">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" text="主板" />
+                                    <CheckMenuItem mnemonicParsing="false" text="创业板" />
+                                    <CheckMenuItem mnemonicParsing="false" text="中小板" />
+                                 </items>
+                              </Menu>
+                              <Menu fx:id="selfMenu" mnemonicParsing="false" text="自选股票池" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="75.0" top="40.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane fx:id="resultPane" maxWidth="-Infinity" prefHeight="230.0" prefWidth="1200.0" styleClass="content-panel" visible="false">
+                     <children>
+                        <HBox layoutX="40.0" layoutY="90.0">
+                           <children>
+                              <Button fx:id="returnLineBtn" layoutX="217.0" layoutY="73.0" mnemonicParsing="false" onAction="#showReturnLineChart" prefHeight="50.0" prefWidth="140.0" styleClass="tab-btn" text="收益曲线" />
+                              <Button fx:id="returnBarBtn" layoutX="306.0" layoutY="83.0" mnemonicParsing="false" onAction="#showReturnBarChart" prefHeight="50.0" prefWidth="140.0" styleClass="tab-btn" text="收益率分布图" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="40.0" layoutY="140.0" prefWidth="1120.0" styleClass="separator-child" />
+                        <Pane fx:id="graphPane" layoutX="40.0" layoutY="160.0" prefHeight="1200.0" prefWidth="1120.0">
+                           <children>
+                              <Pane fx:id="returnBarPane" prefHeight="470.0" prefWidth="1120.0" visible="false">
+                                 <children>
+                                    <BarChart fx:id="relativeIndexBarChart" animated="false" layoutX="373.0" layoutY="62.0" prefHeight="400.0" prefWidth="675.0" title="相对指数收益分布图">
+                                      <xAxis>
+                                        <CategoryAxis fx:id="barChartXAxis" side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis fx:id="barChartYAxis" side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                    <PieChart fx:id="returnCyclePicChart" animated="false" layoutY="62.0" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" />
+                                    <GridPane hgap="20.0" layoutX="27.0" layoutY="14.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="总正收益周期数：" />
+                                          <Label fx:id="positiveCycleLabel" styleClass="winMore" text="132" GridPane.columnIndex="1" />
+                                          <Label text="总负收益周期数：" GridPane.columnIndex="2" />
+                                          <Label fx:id="negativeCycleLabel" styleClass="winLess" text="118" GridPane.columnIndex="3" />
+                                          <Label text="赢率：" GridPane.columnIndex="4" />
+                                          <Label fx:id="winRateLabel" text="52.80%" GridPane.columnIndex="5" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="returnLinePane" prefHeight="485.0">
+                                 <children>
+                                    <LineChart fx:id="cumulativeChart" layoutY="70.0" prefHeight="410.0" prefWidth="1100.0" title="累计收益率">
+                                      <xAxis>
+                                        <CategoryAxis animated="false" side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis />
+                                      </yAxis>
+                                    </LineChart>
+                                    <GridPane hgap="20.0" layoutX="48.0">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="年化收益率" GridPane.columnIndex="1" />
+                                          <Label text="基准年化收益率" GridPane.columnIndex="2" />
+                                          <Label fx:id="rateReturnLabel" styleClass="strongLabel" text="35.7%" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="standardRateReturnLabel" styleClass="strongLabel" text="12.4%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="阿尔法" GridPane.columnIndex="3" />
+                                          <Label fx:id="alphaLabel" styleClass="strongLabel" text="14.6%" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <Label text="贝塔" GridPane.columnIndex="4" />
+                                          <Label fx:id="betaLabel" styleClass="strongLabel" text="0.97" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                          <Label text="夏普比率" GridPane.columnIndex="5" />
+                                          <Label fx:id="sharpLabel" styleClass="strongLabel" text="1.29" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                          <Label text="收益波动率" GridPane.columnIndex="6" />
+                                          <Label fx:id="returnVolatilityLabel" styleClass="strongLabel" text="24.9%" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                          <Label text="最大回撤" GridPane.columnIndex="7" />
+                                          <Label fx:id="maxReturnLabel" styleClass="strongLabel" text="23.8%" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                          <Label text="总收益" />
+                                          <Label fx:id="totalReturnLabel" styleClass="strongLabel" text="23.8%" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <HBox alignment="CENTER_LEFT" layoutX="872.0" layoutY="112.0" spacing="10.0">
+                                       <children>
+                                          <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="18.0" prefWidth="18.0" styleClass="standardLabel" />
+                                          <Label fx:id="standardLabel" layoutX="10.0" layoutY="10.0" style="-fx-font-size: 14;" text="Label" />
+                                          <Label layoutX="56.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="18.0" prefWidth="18.0" styleClass="strategyLabel" />
+                                          <Label layoutX="102.0" layoutY="10.0" style="-fx-font-size: 14;" text="策略收益率" />
+                                       </children>
+                                    </HBox>
+                                    <Label layoutX="31.0" layoutY="110.0" text="\%" />
+                                 </children>
+                              </Pane>
+                              <TreeTableView fx:id="holdRecordTable" layoutX="20.0" layoutY="650.0" prefHeight="550.0" prefWidth="1080.0">
+                                <columns>
+                                  <TreeTableColumn fx:id="dateColumn" editable="false" prefWidth="260.0" resizable="false" styleClass="LeftAlignCol" text="日期" />
+                                  <TreeTableColumn fx:id="codeColumn" editable="false" prefWidth="200.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="证券代码" />
+                                    <TreeTableColumn fx:id="amountColumn" editable="false" prefWidth="200.0" resizable="false" styleClass="RightAlignCol" text="持仓数量" />
+                                    <TreeTableColumn fx:id="capitalColumn" editable="false" prefWidth="200.0" resizable="false" styleClass="RightAlignCol" text="头寸" />
+                                    <TreeTableColumn fx:id="changeColumn" editable="false" prefWidth="200.0" resizable="false" styleClass="RightAlignCol" text="总盈亏" />
+                                </columns>
+                              </TreeTableView>
+                              <Label layoutX="48.0" layoutY="588.0" text="持仓记录" />
+                              <Label layoutX="20.0" layoutY="580.0" prefHeight="40.0" prefWidth="10.0" styleClass="head-tag" />
+                              <HBox alignment="CENTER_LEFT" layoutX="48.0" layoutY="495.0" spacing="10.0">
+                                 <children>
+                                    <Label layoutX="48.0" layoutY="500.0" text="展示区间" />
+                                    <DatePicker fx:id="showStartDatePicker" layoutX="141.0" layoutY="496.0" prefWidth="150.0" />
+                                    <Label layoutX="321.0" layoutY="500.0" text="-" />
+                                    <DatePicker fx:id="showEndDatePicker" layoutX="358.0" layoutY="496.0" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Separator layoutY="70.0" prefWidth="1200.0" />
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="40.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/graph.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="90.0" layoutY="19.0" styleClass="content-title" text="回测结果" />
+                        <Label id="sliderPicLabel" fx:id="sliderGraphLabel" layoutX="40.0" layoutY="139.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="140.0" />
+                        <Button layoutX="1073.0" layoutY="100.0" mnemonicParsing="false" onAction="#showHistory" styleClass="check-btn" text="回测历史" />
+                        <Pane fx:id="historyPane" layoutX="40.0" layoutY="160.0" prefHeight="480.0" prefWidth="1120.0" visible="false">
+                           <children>
+                              <TableView fx:id="historyTable" layoutX="20.0" layoutY="20.0" prefHeight="400.0" prefWidth="1080.0">
+                                <columns>
+                                  <TableColumn fx:id="historyTimeCol" editable="false" prefWidth="200.0" resizable="false" styleClass="LeftAlignCol" text="回测时间" />
+                                    <TableColumn fx:id="historyPoolCol" editable="false" prefWidth="150.0" resizable="false" styleClass="MidAlignCol" text="股票池" />
+                                  <TableColumn fx:id="historyTypeCol" editable="false" prefWidth="140.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="策略类型" />
+                                    <TableColumn fx:id="historySECol" editable="false" prefWidth="240.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="起止时间" />
+                                    <TableColumn fx:id="historyAmountCol" editable="false" prefWidth="120.0" styleClass="RightAlignCol" text="起始金额" />
+                                    <TableColumn fx:id="historyReturnCol" editable="false" prefWidth="110.0" styleClass="MidAlignCol" text="收益" />
+                                    <TableColumn fx:id="historyResultCol" editable="false" prefWidth="100.0" sortable="false" styleClass="MidAlignCol" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="75.0" top="40.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane fx:id="winRatePane" maxWidth="-Infinity" prefHeight="0.0" prefWidth="1200.0" styleClass="content-panel" visible="false">
+                     <children>
+                        <TableView fx:id="winRateTable" layoutX="90.0" layoutY="200.0" prefHeight="600.0" prefWidth="450.0">
+                          <columns>
+                            <TableColumn fx:id="relativeStrengthCycleCol" editable="false" prefWidth="180.0" resizable="false" styleClass="MidAlignCol" text="相对强弱计算周期" />
+                            <TableColumn fx:id="excessReturnCol" editable="false" prefWidth="120.0" resizable="false" styleClass="MidAlignCol" text="超额收益" />
+                              <TableColumn fx:id="yearWinRateCol" editable="false" prefWidth="120.0" resizable="false" styleClass="MidAlignCol" text="1年内胜率%" />
+                          </columns>
+                        </TableView>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="40.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/areachart.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="90.0" layoutY="19.0" styleClass="content-title" text="超额收益率和策略胜率与不同形成期/持有期的关系图" />
+                        <Separator layoutY="70.0" prefWidth="1200.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="90.0" layoutY="91.0" prefHeight="30.0" spacing="20.0">
+                           <children>
+                              <Label layoutX="536.0" layoutY="139.0" text="回测时间：" />
+                              <Label fx:id="winRateStartDateLabel" text="2017-12-12" />
+                              <Label text="-" />
+                              <Label fx:id="winRateEndDateLabel" text="2017-12-12" />
+                           </children>
+                        </HBox>
+                        <Button layoutX="800.0" layoutY="136.0" mnemonicParsing="false" onAction="#startWin" styleClass="check-btn" text="开始回测" />
+                        <Label layoutX="90.0" layoutY="140.0" text="策略：" />
+                        <Label fx:id="strategyLabel" layoutX="200.0" layoutY="140.0" text="动量策略" />
+                        <HBox fx:id="momentumHBox" alignment="CENTER_LEFT" layoutX="350.0" layoutY="135.0" spacing="20.0">
+                           <children>
+                              <Label layoutX="350.0" layoutY="165.0" text="基准期：" />
+                              <ComboBox fx:id="basePeriodComb" layoutX="461.0" layoutY="143.0" prefWidth="150.0" promptText="形成期" />
+                              <TextField fx:id="dayField" layoutX="671.0" layoutY="155.0" prefWidth="50.0" promptText="10" />
+                              <Label layoutX="744.0" layoutY="145.0" text="天" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="meanReversionHBox" alignment="CENTER_LEFT" layoutX="350.0" layoutY="135.0" spacing="20.0" visible="false">
+                           <children>
+                              <Label layoutX="350.0" layoutY="165.0" text="形成期：" />
+                              <ComboBox fx:id="dayComb" layoutX="461.0" layoutY="143.0" prefWidth="75.0" promptText="5 日" />
+                              <Label text="日" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="winRateTipLabel" layoutX="974.0" layoutY="140.0" styleClass="stock-increase" text="Label" visible="false" />
+                        <AreaChart fx:id="excessReturnAreaChart" layoutX="600.0" layoutY="200.0" prefHeight="250.0" prefWidth="500.0" title="超额收益 vs 全样本 - 不同计算周期">
+                          <xAxis>
+                            <CategoryAxis animated="false" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
+                        <AreaChart fx:id="winRateAreaChart" layoutX="600.0" layoutY="500.0" prefHeight="250.0" prefWidth="500.0" title="策略胜率 - 不同计算周期">
+                           <xAxis>
+                              <CategoryAxis animated="false" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </AreaChart>
+                        <Label layoutX="623.0" layoutY="544.0" text="\%" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="40.0" left="75.0" top="40.0" />
+                     </VBox.margin>
+                  </Pane>
+               </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+      <Pane fx:id="coverPane" prefHeight="840.0" prefWidth="1350.0" styleClass="cover-pane" visible="false" />
+      <Pane fx:id="animationPane" prefHeight="840.0" prefWidth="1350.0" visible="false">
+         <children>
+            <HBox alignment="CENTER" layoutX="530.0" layoutY="380.0" spacing="20.0">
+               <children>
+                  <ProgressIndicator fx:id="loadingIndicator" layoutX="550.0" layoutY="529.0" prefHeight="30.0" prefWidth="30.0" progress="0.0" />
+                  <Label fx:id="loadingLabel" layoutX="629.0" layoutY="529.0" text="正在为您计算，请耐心等候...">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+    </children>
+</fx:root>

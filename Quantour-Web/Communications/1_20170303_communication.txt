@@ -1,0 +1,6 @@
+who：郭浩滨 林志和 吴游杰 吴志成
+when：第一周周五晚上
+what：提取项目需求，初步确定项目计划文档，完成需求规格文档、测试文档、详细设计文档的模板，学习git和gitlab的用法
+where：机房
+how long：2.5h
+arrived solutions：做出相应分工决策

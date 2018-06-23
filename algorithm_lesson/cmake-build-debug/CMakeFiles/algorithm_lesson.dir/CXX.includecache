@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hiki/OneDrive - smail.nju.edu.cn/Projects/algorithm_lesson/contest8/problem_b.cpp
+iostream
+-
+stdio.h
+-
+string
+-
+sstream
+-
+vector
+-
+math.h
+-
+

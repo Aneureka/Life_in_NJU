@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="orderDetailInfo">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">机构名称</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="instituteName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">课程名称</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="lessonName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">课程描述</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="description"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">原价</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="originalTotalPrice"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">总价</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="totalPrice"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">创建时间</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="createdAt"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">订单状态</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="orderStatus"></p>
+        </div>
+    </div>
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkUserLogin();
+    $('#name').text(window.localStorage.getItem('name'));
+
+    let setOrderDetailInfo = (order) => {
+        let instituteName = order['instituteName'];
+        let lessonName = order['lessonName'];
+        let description = order['description'];
+        let originalTotalPrice = order['originalTotalPrice'];
+        let totalPrice = order['totalPrice'];
+        let createdAt = order['createdAt'];
+        let orderStatus = order['orderStatus'];
+        let studentDetailInfos = order['studentDetailInfos'];
+
+        $('#instituteName').text(instituteName);
+        $('#lessonName').text(lessonName);
+        $('#description').text(description);
+        $('#originalTotalPrice').text(originalTotalPrice);
+        $('#totalPrice').text(totalPrice);
+        $('#createdAt').text(createdAt);
+        $('#orderStatus').text(orderStatus);
+
+        $.each(studentDetailInfos, (seq, student) => {
+            let studentName = student['name'];
+            let teacher = student['teacher'];
+            let beganAt = student['beganAt'];
+            let score = student['score'] === -1 ? '无' : student['score'];
+
+            $('#orderDetailInfo').append(
+                '<div class="form-group">\n' +
+                '    <label class="col-sm-1 control-label">学生</label>\n' +
+                '    <div class="col-sm-1">\n' +
+                '        <p class="form-control-static studentName">' + studentName +'</p>\n' +
+                '    </div>\n' +
+                '    <div class="col-sm-1">\n' +
+                '        <p class="form-control-static teacher">' + teacher + '</p>\n' +
+                '    </div>\n' +
+                '    <div class="col-sm-1">\n' +
+                '        <p class="form-control-static beganAt">' + beganAt + '</p>\n' +
+                '    </div>\n' +
+                '    <div class="col-sm-1">\n' +
+                '        <p class="form-control-static score">' + score + '</p>\n' +
+                '    </div>\n' +
+                '</div>'
+            );
+        });
+
+    };
+
+
+    $().ready(() => {
+
+        let orderId = window.localStorage.getItem('orderId');
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/orders/detail',
+            data: {orderId: orderId},
+            success: (response) => {
+                setOrderDetailInfo(response.data);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

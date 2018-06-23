@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>培训机构</th>
+        <th>简要描述</th>
+        <th>价格</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>时间安排</th>
+    </tr>
+    </thead>
+    <tbody id="lessons"></tbody>
+</table>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    $('#name').text(window.localStorage.getItem('name'));
+
+    let showLessons = (lessons) => {
+        $.each(lessons, (seq, lesson) => {
+            let id = lesson['id'];
+            let name = lesson['name'];
+            let instituteName = lesson['instituteName'];
+            let description = lesson['description'];
+            let price = lesson['price'];
+            let start = lesson['start'];
+            let end = lesson['end'];
+            let timePlan = lesson['timePlan'];
+
+            let item =
+                '<tr class="lesson" style="cursor:pointer">' +
+                '<td>' + id + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + instituteName + '</td>' +
+                '<td>' + description + '</td>' +
+                '<td>' + price + '</td>' +
+                '<td>' + start + '</td>' +
+                '<td>' + end + '</td>' +
+                '<td>' + timePlan + '</td></tr>';
+
+            $('#lessons').append(item);
+        });
+    };
+
+    $().ready(() => {
+
+        let lessons = null;
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings',
+            data: {},
+            success: (response) => {
+                lessons = response.data;
+                showLessons(lessons);
+                console.log(lessons);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#lessons').on('click', '.lesson', function () {
+            let lessonId = $(this).children().first().text();
+            window.localStorage.setItem('lessonId', lessonId);
+            let lessonName = $(this).children().first().next().text();
+            window.localStorage.setItem('lessonName', lessonName);
+            window.location.href = 'order.html';
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">蓝鸡培训中心</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="../user/login.html">用户登入</a></li>
+                <li><a href="../manager/login.html">管理员登入</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login.html">登录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container col-md-3 col-sm-offset-4">
+    <h2 class="text-center">培训机构注册</h2>
+    <div>
+        <form role="form">
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input class="form-control" id="email" type="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input class="form-control" id="password" type="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <input class="form-control" id="confirmPassword" type="password" required>
+            </div>
+            <div class="form-group">
+                <label for="name">机构名称</label>
+                <input class="form-control" id="name" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="description">机构描述</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="address">地址</label>
+                <input class="form-control" id="address" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="teacherInfo">师资情况</label>
+                <input class="form-control" id="teacherInfo" type="text">
+            </div>
+            <a class="btn btn-primary btn-block" href="#" id="register">注册</a>
+        </form>
+    </div>
+</div>
+
+<script src="../js/validator.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/form-util.js"></script>
+<script>
+
+    $().ready(() => {
+        $('#register').click(() => {
+            let email = $('#email').val();
+            let password = $('#password').val();
+            let confirmPassword = $('#confirmPassword').val();
+            let name = $('#name').val();
+            let description = $('#description').val();
+            let address = $('#address').val();
+            let teacherInfo = $('#teacherInfo').val();
+
+            if (password !== confirmPassword) {
+                alert('两次输入密码不一致！');
+                return;
+            }
+            if(!validator.isEmail(email)) {
+                alert('请输入正确的邮箱！');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/institutes/register',
+                data: {
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    name: name,
+                    description: description,
+                    address: address,
+                    teacherInfo: teacherInfo
+                },
+                success: (response) => {
+                    alert(response.message);
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+
+        })
+
+    })
+
+</script>
+
+
+</body>
+</html>

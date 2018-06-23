@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<!-- 这里有个总体的统计，总订单，总学员，总利润，学员平均分 -->
+<!-- 这里应该有个Tab，选择看订单情况还是学院情况 -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a href="#" class="nav-link active" id="showOrderList">订单列表</a>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link" id="showStudentList">学生列表</a>
+    </li>
+</ul>
+
+<table class="table" id="orderList">
+    <thead>
+    <tr>
+        <th>订单号</th>
+        <th>用户姓名</th>
+        <th>人数</th>
+        <th>订单总价格</th>
+        <th>创建时间</th>
+        <th>订单状态</th>
+    </tr>
+    </thead>
+    <tbody id="orders"></tbody>
+</table>
+
+<table class="table" id="studentList" hidden>
+    <thead>
+    <tr>
+        <th>学生编号</th>
+        <th>姓名</th>
+        <th>班级/老师</th>
+        <th>所属订单号</th>
+        <th>已退课</th>
+        <th>开始上课日期 (yyyy-MM-dd)</th>
+        <th>成绩</th>
+    </tr>
+    </thead>
+    <tbody id="students"></tbody>
+</table>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkInstituteLogin();
+    $('#instituteName').text(window.localStorage.getItem('instituteName'));
+
+    let showOrdersForLesson = (orders) => {
+        $.each(orders, (seq, order) => {
+            let id = order['id'];
+            let username = order['username'];
+            let number = order['number'];
+            let totalPrice = order['totalPrice'];
+            let createdAt = order['createdAt'];
+            let orderStatus = order['orderStatus'];
+
+            let item =
+                '<tr class="order">' +
+                '<td>' + id + '</td>' +
+                '<td>' + username + '</td>' +
+                '<td>' + number + '</td>' +
+                '<td>' + totalPrice + '</td>' +
+                '<td>' + createdAt + '</td>' +
+                '<td>' + orderStatus + '</td>' +
+                '</tr>';
+            $('#orders').append(item);
+        });
+    };
+
+    let showStudentsForLesson = (students) => {
+        $.each(students, (seq, student) => {
+            let id = student['id'];
+            let name = student['name'];
+            let teacher = student['teacher'];
+            let orderId = student['orderId'];
+            let quit = student['quit'];
+            let beganAt = student['beganAt'];
+            let score = student['score'] === -1 ? '无' : student['score'];
+            beganAt = '<input class="form-control col-sm-1 beganAt" name="beganAt" type="text" value="' + beganAt + '">\n';
+            score = '<input class="form-control col-sm-1 score" name="score" type="text" value="' + score + '">\n';
+
+            let item =
+                '<tr class="student">' +
+                '<td>' + id + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + teacher + '</td>' +
+                '<td>' + orderId + '</td>' +
+                '<td>' + quit + '</td>' +
+                '<td>' + beganAt + '</td>' +
+                '<td>' + score + '</td>' +
+                '<td><button type="button" class="btn btn-primary modify">修改</button></td>' +
+                '</tr>';
+            $('#students').append(item);
+        });
+    };
+    
+
+    $().ready(() => {
+
+        let lessonId = window.localStorage.getItem('lessonIdForInstitute');
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/orders/forLesson',
+            data: {lessonId: lessonId},
+            success: (response) => {
+                let orders = response.data;
+                showOrdersForLesson(orders);
+                console.log(orders);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/students/forLesson',
+            data: {lessonId: lessonId},
+            success: (response) => {
+                let students = response.data;
+                showStudentsForLesson(students);
+                console.log(students);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#showOrderList').click(() => {
+            $('#orderList').show();
+            $('#studentList').hide();
+        });
+
+        $('#showStudentList').click(() => {
+            $('#orderList').hide();
+            $('#studentList').show();
+        });
+
+        $('#students').on('click', '.modify', function (event) {
+            let studentId = $(this).parent().parent().children().first().text();
+            console.log(studentId);
+            let beganAt = $(this).parent().prev().prev().children().val();
+            let score =  $(this).parent().prev().children().val();
+            beganAt = (beganAt === '未开始课程' ? null : beganAt);
+            score = (score === '无' ? -1 : score);
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/trainings/students/modify',
+                data: {
+                    studentId: studentId,
+                    beganAt: beganAt,
+                    score: score
+                },
+                success: (response) => {
+                    if (response.success) {
+                        alert('修改成功！');
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+
+            event.stopPropagation();
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/institutes/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

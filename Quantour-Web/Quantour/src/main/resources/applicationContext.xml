@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.2.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+         http://www.springframework.org/schema/task
+         http://www.springframework.org/schema/task/spring-task-3.2.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+
+    <!-- 开启IOC注解扫描 -->
+    <context:component-scan base-package="leftovers"/>
+    <!-- 开启MVC注解扫描 -->
+    <mvc:annotation-driven/>
+    <!-- 以下为数据库和hibernate配置 -->
+    <context:property-placeholder location="classpath:/database.properties"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>
+        <property name="url" value="${jdbc.mysql.url}"/>
+        <property name="username" value="${jdbc.mysql.username}"/>
+        <property name="password" value="${jdbc.mysql.password}"/>
+    </bean>
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="leftovers.model"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 定义 Autowired 自动注入 Bean -->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+    <!-- 扫描有注解的文件 base-package 包路径 -->
+    <!--<context:component-scan base-package="leftovers"/>-->
+    <!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="create*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="add*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="*" propagation="NOT_SUPPORTED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- 定义切面，在leftovers.service包及子包中所有以Service结尾的方法中,执行有关的hibernate session的事务操作 -->
+    <aop:config>
+        <aop:pointcut id="serviceOperation"
+                      expression="execution(* leftovers.service..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+    </aop:config>
+
+    <!-- 以下为视图映射配置 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>-->
+    <!-- 其他配置 -->
+    <!-- 静态文件访问 -->
+    <mvc:default-servlet-handler/>
+
+    <!--定时任务-->
+    <!--<task:annotation-driven/>-->
+    <!--<context:annotation-config/>-->
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+    <!--<context:component-scan base-package="shoppingcart.task"/>-->
+
+
+    <!--<mvc:cors>-->
+        <!--<mvc:mapping path="/**"-->
+                     <!--allowed-origins="http://localhost:3000"/>-->
+    <!--</mvc:cors>-->
+    <!--<bean class="shoppingcart.config.CorsConfigurerAdapter"></bean>-->
+
+    <!-- 实体管理器 -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="true" />
+                <property name="database" value="MYSQL" />
+                <property name="showSql" value="true" />
+            </bean>
+        </property>
+        <property name="packagesToScan" value="leftovers.model" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- dao -->
+    <jpa:repositories base-package="leftovers.repository"/>
+
+    <!-- 定义事务管理器（声明式的事务） -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- jpa参数转换 -->
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <ref bean="sortResolver"/>
+            <ref bean="pageableResolver" />
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+    <bean id="sortResolver" class="org.springframework.data.web.SortHandlerMethodArgumentResolver" />
+    <bean id="pageableResolver" class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">
+        <constructor-arg ref="sortResolver" />
+    </bean>
+</beans>

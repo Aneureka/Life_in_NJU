@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>申请号</th>
+        <th>机构ID</th>
+        <th>名称</th>
+        <th>简要描述</th>
+        <th>邮箱</th>
+        <th>地址</th>
+        <th>师资情况</th>
+        <th>申请时间</th>
+        <th>申请状态</th>
+        <th style='width:20%'>建议</th>
+        <th>处理时间</th>
+    </tr>
+    </thead>
+    <tbody id="applicationLogs"></tbody>
+</table>
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkManagerLogin();
+
+    let showApplicationLogs = (applicationLogs) => {
+        $.each(applicationLogs, (seq, log) => {
+            let id = log['id'];
+            let instituteId = log['instituteId'] ? log['instituteId'] : '暂无';
+            let name = log['name'];
+            let description = log['description'];
+            let email = log['email'];
+            let address = log['address'];
+            let teacherInfo = log['teacherInfo'];
+            let createdAt = log['createdAt'];
+            let status = log['status'];
+            let advice = log['advice'];
+            let processedAt = log['processedAt'] ? log['processedAt'] : '';
+
+            let item =
+                '<tr class="applicationLog" style="cursor:pointer">' +
+                '<td>' + id + '</td>' +
+                '<td>' + instituteId + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + description + '</td>' +
+                '<td>' + email + '</td>' +
+                '<td>' + address + '</td>' +
+                '<td>' + teacherInfo + '</td>' +
+                '<td>' + createdAt + '</td>' +
+                '<td>' + status + '</td>' +
+                '<td>' + advice + '</td>' +
+                '<td>' + processedAt + '</td>' +
+                '</tr>';
+            $('#applicationLogs').append(item);
+        });
+    };
+
+    $().ready(() => {
+
+        let applicationLogs = null;
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/institutes/applicationLogs',
+            data: {},
+            success: (response) => {
+                applicationLogs = response.data;
+                showApplicationLogs(applicationLogs);
+                console.log(applicationLogs);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#applicationLogs').on('click', '.applicationLog', function () {
+            let applicationId = $(this).children().first().text();
+            window.localStorage.setItem('applicationId', applicationId.toString());
+            window.location.href = 'application.html';
+        });
+
+        $('#logout').click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/managers/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

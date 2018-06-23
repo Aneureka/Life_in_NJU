@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="profile">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">我的ID</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="id"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">姓名</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="myName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">余额</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="balance"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">会员等级</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="rate"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">积分</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="credit"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="useCredit">转换积分</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger btn-sm form-control-static col-sm-offset-1" id="disqualify">注销用户</button>
+        </div>
+    </div>
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkUserLogin();
+    $('#name').text(window.localStorage.getItem('name'));
+
+    let setProfile = (profile) => {
+        let id = profile['id'];
+        let name = profile['name'];
+        let balance = profile['balance'];
+        let rate = profile['rate'];
+        let credit = profile['credit'];
+
+        $('#id').text(id);
+        $('#myName').text(name);
+        $('#balance').text(balance);
+        $('#rate').text(rate);
+        $('#credit').text(credit);
+
+        console.profile(profile);
+    };
+
+    let updateCredit = (profile) => {
+        $('#balance').text(profile['balance']);
+        $('#credit').text(profile['credit']);
+    };
+
+    $().ready(() => {
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/users/profile',
+            data: {},
+            success: (response) => {
+                setProfile(response.data);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#useCredit').click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/useCredit',
+                data: {},
+                success: (response) => {
+                    alert('转换积分成功！');
+                    updateCredit(response.data);
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+        $('#disqualify').click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/disqualify',
+                data: {},
+                success: (response) => {
+                    alert('注销用户成功！');
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

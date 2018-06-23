@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:text="Weekly"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:background="#3f51b5"/>
+
+    <fragment
+        android:id="@+id/news_title_fragment"
+        android:name="com.example.hiki.l9_newstest.NewsTitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

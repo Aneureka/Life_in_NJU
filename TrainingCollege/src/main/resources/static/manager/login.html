@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">蓝鸡培训中心</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="../user/login.html">用户登入</a></li>
+                <li><a href="../institute/login.html">培训机构登入</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container col-md-2 col-sm-offset-5">
+    <h2 class="text-center">管理员登入</h2>
+    <div>
+        <form >
+            <div class="form-group">
+                <label for="id">管理员ID</label>
+                <input class="form-control" id="id" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input class="form-control" id="password" type="password">
+            </div>
+            <a class="btn btn-primary btn-block" href="#" id="login">登录</a>
+        </form>
+    </div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+    $().ready(() => {
+        $('#login').click(() => {
+            let id = $('#id').val();
+            let password = $('#password').val();
+            $.ajax({
+                type: 'POST',
+                url: '/api/managers/login',
+                data: {
+                    id: id,
+                    password: password
+                },
+                success: (response) => {
+                    if (response.success) {
+                        window.location.href = 'home.html';
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+
+        })
+
+    })
+
+</script>
+
+    </body>
+</html>

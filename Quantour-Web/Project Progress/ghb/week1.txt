@@ -1,0 +1,5 @@
+who : 郭浩滨
+when: 第一周
+what: 项目需求文档第三用例部分、git/gitlab/sourcetree的用法
+problem : 缺乏股票的相关知识、python数据处理、胶水语言的应用
+todo : 学习股票分析的相关知识、胶水语言的处理、java处理数据等

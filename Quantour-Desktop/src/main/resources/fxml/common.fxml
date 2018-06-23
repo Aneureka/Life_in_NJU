@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ComStockController">
+   <children>
+      <Pane layoutY="60.0" prefHeight="840.0" prefWidth="250.0" styleClass="left-bar">
+         <children>
+            <Button fx:id="stockInfoBtn" layoutY="295.0" mnemonicParsing="false" onAction="#showStockInfo" onMouseEntered="#stockInfoMouseOn" onMouseExited="#stockInfoMouseOut" prefHeight="30.0" prefWidth="250.0" styleClass="left-bar-btn" text="  个股查看">
+               <graphic>
+                  <ImageView fx:id="stockInfoImg" fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/listIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="-40.0" />
+               </padding>
+            </Button>
+            <Button fx:id="careBtn" layoutY="350.0" mnemonicParsing="false" onAction="#showMyCare" onMouseEntered="#careMouseOn" onMouseExited="#careMouseOut" prefHeight="30.0" prefWidth="250.0" styleClass="left-bar-btn" text="  自选股票">
+               <graphic>
+                  <ImageView fx:id="careImg" fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/careIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="-40.0" />
+               </padding>
+            </Button>
+            <Button fx:id="compareBtn" layoutY="405.0" mnemonicParsing="false" onAction="#showStockCompare" onMouseEntered="#compareMouseOn" onMouseExited="#compareMouseOut" prefHeight="30.0" prefWidth="250.0" styleClass="left-bar-btn" text="  股票对比">
+               <graphic>
+                  <ImageView fx:id="compareImg" fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/compareIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="-40.0" />
+               </padding>
+            </Button>
+            <Button fx:id="marketBtn" layoutY="460.0" mnemonicParsing="false" onAction="#showStockMarket" onMouseEntered="#marketMouseOn" onMouseExited="#marketMouseOut" prefHeight="30.0" prefWidth="250.0" styleClass="left-bar-btn" text="  市场行情">
+               <graphic>
+                  <ImageView fx:id="marketImg" fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/marketIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="-40.0" />
+               </padding>
+            </Button>
+            <Label layoutX="93.0" layoutY="72.0" styleClass="username" text="username" visible="false" />
+            <Label layoutX="83.0" layoutY="115.0" styleClass="userid" text="id：9090909" visible="false" />
+            <Button fx:id="logoutBtn" layoutX="55.0" layoutY="765.0" mnemonicParsing="false" onMouseEntered="#logoutMouseOn" onMouseExited="#logoutMouseOut" styleClass="left-bar-btn" text="退出登录" visible="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fx:id="rightArrow" fitHeight="150.0" fitWidth="20.0" layoutX="200.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/common/right_arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="strategyBtn" layoutY="515.0" mnemonicParsing="false" onAction="#showStockStrategy" onMouseEntered="#strategyMouseOn" onMouseExited="#strategyMouseOut" prefHeight="30.0" prefWidth="250.0" styleClass="left-bar-btn" text="  策略回测">
+               <graphic>
+                  <ImageView fx:id="strategyImg" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/common/strategy.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="-40.0" />
+               </padding>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="mainPane" layoutX="250.0" layoutY="60.0" prefHeight="840.0" prefWidth="1350.0" />
+      <Pane layoutX="250.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="1350.0" styleClass="top-bar">
+         <children>
+            <Button layoutX="1230.0" mnemonicParsing="false" onAction="#minWindow" prefHeight="60.0" prefWidth="60.0" styleClass="min-btn">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/common/min.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="1290.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="60.0" prefWidth="60.0" styleClass="close-btn">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/common/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="10.0">
+               <children>
+                  <TextField fx:id="stockNameOrCode" prefHeight="40.0" prefWidth="265.0" promptText="股票名称 / 代码" />
+                  <Button layoutX="300.0" mnemonicParsing="false" onAction="#findStock" styleClass="search-btn">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="-1.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Label id="appName" alignment="CENTER" prefHeight="60.0" prefWidth="250.0" text="Quantour" />
+   </children>
+</Pane>

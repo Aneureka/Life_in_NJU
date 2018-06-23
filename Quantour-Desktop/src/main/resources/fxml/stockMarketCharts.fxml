@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="840.0" prefWidth="1350.0" styleClass="all-pane" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.StockListController">
+   <children>
+      <BarChart layoutX="151.0" layoutY="87.0" prefHeight="300.0" prefWidth="450.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart layoutX="750.0" layoutY="87.0" prefHeight="300.0" prefWidth="450.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart layoutX="151.0" layoutY="463.0" prefHeight="300.0" prefWidth="450.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart layoutX="750.0" layoutY="463.0" prefHeight="300.0" prefWidth="450.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="357.0" layoutY="61.0" text="交易量" />
+      <Label layoutX="923.0" layoutY="61.0" text="涨、跌停股票数" />
+      <Label layoutX="293.0" layoutY="425.0" text="涨、跌幅超过5%的股票数" />
+      <Label layoutX="785.0" layoutY="425.0" text="开盘-收盘大于（小于）5%*上一个交易日收盘价的股票数" />
+   </children>
+</Pane>

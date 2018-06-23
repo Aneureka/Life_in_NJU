@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">蓝鸡培训中心</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="../institute/login.html">培训机构登入</a></li>
+                <li><a href="../manager/login.html">管理员登入</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login.html">登录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container col-md-2 col-sm-offset-5">
+    <h2 class="text-center">用户注册</h2>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input class="form-control" id="email" type="email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input class="form-control" id="password" type="password" required>
+    </div>
+    <div class="form-group">
+        <label for="password">确认密码</label>
+        <input class="form-control" id="confirmPassword" type="password" required>
+    </div>
+    <div class="form-group">
+        <label for="email">姓名</label>
+        <input class="form-control" id="name" type="text" required>
+    </div>
+    <a class="btn btn-primary btn-block" id="register" href="#">注册</a>
+</div>
+
+<script src="../js/validator.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/form-util.js"></script>
+
+<script>
+    $().ready(() => {
+        $('#register').click(() => {
+            let email = $('#email').val();
+            if(!validator.isEmail(email)) {
+                alert('请输入正确的邮箱！');
+                return;
+            }
+
+            let password = $('#password').val();
+            let confirmPassword = $('#confirmPassword').val();
+            if (validator.isEmpty(password)) {
+                alert('密码不能为空！');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('两次输入密码不一致！');
+                return;
+            }
+
+            let name = $('#name').val();
+            if (validator.isEmpty(name)) {
+                alert('姓名不能为空！');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/users/register',
+                data: {
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    name: name
+                },
+                success: (response) => {
+                    alert(response.message);
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+
+        })
+
+    })
+
+</script>
+
+</body>
+</html>

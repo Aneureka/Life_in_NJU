@@ -1,0 +1,71 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/training_college?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useTimezone=true&autoReconnect=true&useSSL=false&allowMultiQueries=true
+    username: root
+    password: aneureka
+
+  jpa:
+    properties:
+        hbm2ddl:
+          auto: update
+        id:
+          new_generator_mappings: true
+    show-sql: true
+
+#  thymeleaf:
+#    prefix: classpath:/static/html/
+#    suffix: .html
+#    cache: false
+#    encoding: utf-8
+
+  resources:
+    static-locations: classpath:/static/
+
+  mail:
+    protocol: smtp
+    host: smtp.qq.com
+    port: 25
+    username: 972579500@qq.com
+    password: whgodxpzprmcbddd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+debug: false
+
+banner:
+  location: banner.txt
+
+trainingCollege:
+  host: http://localhost:8080
+
+notification:
+  activating: 激活信息已经发送到你的邮箱啦，请及时查收！
+  emailAlreadyExists: 这个邮箱已经被注册啦。
+  userNotExists: 该用户不存在。
+  wrongPassword: 密码错误。
+  userNotActivates: 你还没有激活账户哦，激活信息已发至你的邮箱，快去看看吧！
+  invalidToken: 激活链接不存在！
+  expiredToken: 激活链接已过期！
+  userDisqualified: 该用户会员资格已停止！
+  waitForCheck: 申请成功，处理结果将会以邮件的方式发送给您，请耐心等候。
+  managerNotExists: 该管理员不存在。
+  instituteNotExists: 该机构不存在。
+  handled: 处理成功！
+
+#logging:
+#  file: debug.log
+
+
+
+
+
+

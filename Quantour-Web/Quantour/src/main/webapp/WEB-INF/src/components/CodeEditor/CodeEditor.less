@@ -1,0 +1,101 @@
+@import "../variables";
+
+.stage_change_btn {
+  text-align: center;
+  background-color: white;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.stage_btn_pos {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.code_btngroup {
+  float: right;
+  margin-bottom: 5px;
+
+  .code_btngroup_btn {
+    margin-left: 10px;
+  }
+}
+
+.chart_selectorgroup {
+  margin-left: 4px;
+  margin-bottom: 5px;
+}
+.chart_section {
+  height: 760px;
+  background-color: white;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  text-align: center;
+
+  .result_info {
+    //list-style: none;
+    //display: inline-block;
+    //margin: 0 15px;
+  }
+
+  .incomeChart_style {
+    margin-top: 80px;
+    font-size: @font36;
+    color: @font_sub_title_color;
+  }
+}
+.result_info {
+  font-size: 1.2em;
+  font-weight: 600;
+  position: relative;
+  top: 35px;
+}
+
+.btn_gap {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.log_section {
+  height: 378px;
+  background-color: white;
+  margin-left: 4px;
+}
+
+.standard_promise {
+  margin-left: 5px;
+  width: 90px;
+}
+.standrad_section {
+  margin-left: 10px;
+}
+
+.sum_table {
+  width: 650px;
+  margin: 0 auto;
+}
+
+.sum_table th {
+  font-weight: normal;
+  font-size: @font14;
+  padding: 2px 15px;
+  color: @font_sub_title_color;
+}
+.sum_table th:nth-child(1) {
+  color: @font_red;
+}
+.sum_table th:nth-child(2) {
+  color: @font_red;
+}
+.sum_table th:nth-child(3) {
+  color: @font_blue;
+}
+.sum_table th:nth-child(4) {
+  color: @font_blue;
+}
+.sum_table td {
+  font-weight: normal;
+  font-size: @font18;
+  padding: 2px 15px;
+  color: @font_title_color;
+}

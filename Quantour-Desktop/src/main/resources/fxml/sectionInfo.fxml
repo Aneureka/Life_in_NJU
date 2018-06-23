@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1350.0" styleClass="all-background-panel" stylesheets="@../css/main.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.SectionInfoController">
+   <children>
+      <Label fx:id="sectionNameLabel" layoutX="67.0" layoutY="75.0" styleClass="section-name-label" text="版块名称" />
+      <TableView id="sectionStockList" fx:id="stockList" layoutX="67.0" layoutY="133.0" prefHeight="590.0" prefWidth="543.0">
+        <columns>
+            <TableColumn prefWidth="20.0" />
+          <TableColumn fx:id="codeCol" prefWidth="100.0" styleClass="LeftAlignCol" text="代码" />
+          <TableColumn fx:id="nameCol" prefWidth="120.0" styleClass="LeftAlignCol" text="名称" />
+            <TableColumn fx:id="industryCol" prefWidth="210.0" styleClass="LeftAlignCol" text="行业" />
+            <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="70.0" styleClass="LeftAlignCol" />
+        </columns>
+      </TableView>
+      <Button fx:id="recallBtn" layoutX="975.0" layoutY="745.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="300.0" styleClass="section-info-recall-btn" text="回      测" />
+      <Pane layoutX="688.0" layoutY="133.0" prefHeight="590.0" prefWidth="593.0" styleClass="add-stock-section">
+         <children>
+            <FlowPane fx:id="industryFlowPane" layoutX="37.0" layoutY="217.0" prefHeight="282.0" prefWidth="519.0">
+               <children>
+                  <Button mnemonicParsing="false" text="银行" />
+                  <Button mnemonicParsing="false" text="房地产" />
+                  <Button mnemonicParsing="false" text="医药生物" />
+                  <Button mnemonicParsing="false" text="机械" />
+                  <Button mnemonicParsing="false" text="非金属类建材" />
+                  <Button mnemonicParsing="false" text="石油化工" />
+                  <Button mnemonicParsing="false" text="家电" />
+                  <Button mnemonicParsing="false" text="汽车和汽车零部件" />
+                  <Button mnemonicParsing="false" text="纺织和服装" />
+                  <Button mnemonicParsing="false" text="食品饮料" />
+                  <Button mnemonicParsing="false" text="电子" />
+                  <Button mnemonicParsing="false" text="钢铁" />
+                  <Button mnemonicParsing="false" text="计算机" />
+                  <Button mnemonicParsing="false" text="交通运输仓储" />
+                  <Button mnemonicParsing="false" text="批发和零售贸易" />
+                  <Button mnemonicParsing="false" text="电力、煤气及水等公用事业" />
+                  <Button mnemonicParsing="false" text="农林牧渔" />
+                  <Button mnemonicParsing="false" text="社会服务业" />
+                  <Button mnemonicParsing="false" text="通信" />
+                  <Button mnemonicParsing="false" text="基础化工" />
+                  <Button mnemonicParsing="false" text="建筑和工程" />
+                  <Button mnemonicParsing="false" text="造纸印刷" />
+                  <Button mnemonicParsing="false" text="电力设备与新能源" />
+                  <Button mnemonicParsing="false" text="传播与文化" />
+                  <Button mnemonicParsing="false" text="有色金属" />
+                  <Button mnemonicParsing="false" text="煤炭开采" />
+                  <Button mnemonicParsing="false" text="非银行金融" />
+               </children>
+            </FlowPane>
+            <TextField fx:id="inputField" layoutX="37.0" layoutY="59.0" prefHeight="41.0" prefWidth="300.0" promptText="股票名称/代码" />
+            <Button layoutX="376.0" layoutY="60.0" mnemonicParsing="false" onAction="#addSingleStockEvent" prefHeight="40.0" prefWidth="100.0" styleClass="selfStockPoolBtn" text="添加" />
+            <Separator layoutX="34.0" layoutY="137.0" prefHeight="23.0" prefWidth="526.0" />
+            <Label layoutX="37.0" layoutY="170.0" text="行业板块" />
+            <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <Label fx:id="warningExistLabel" layoutX="483.0" layoutY="70.0" styleClass="warning-label" text="该股票已存在" visible="false" />
+         </children>
+      </Pane>
+      <Button fx:id="backBtn" layoutY="4.0" mnemonicParsing="false" onAction="#backEvent" styleClass="back-btn" text="返回">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane fx:id="controllerBtnPane" layoutX="202.0" layoutY="751.0">
+         <children>
+            <Button layoutX="157.0" mnemonicParsing="false" onAction="#confirmChangeStockList" prefHeight="40.0" prefWidth="100.0" styleClass="confirmaddbtn" text="确认修改" />
+            <Button mnemonicParsing="false" onAction="#cancelChangeStock" prefHeight="40.0" prefWidth="100.0" styleClass="canceladdbtn" text="取    消" />
+         </children>
+      </Pane>
+      <Label layoutX="459.0" layoutY="98.0" text="股票数：" />
+      <Label fx:id="stockNum" layoutX="531.0" layoutY="98.0" text="Label" />
+   </children>
+</fx:root>

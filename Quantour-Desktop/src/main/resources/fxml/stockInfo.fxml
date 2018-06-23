@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1350.0" styleClass="all-background-panel" stylesheets="@../css/main.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.StockInfoController">
+   <children>
+      <ScrollPane layoutX="135.0" layoutY="285.0" prefViewportHeight="550.0" prefViewportWidth="1080.0" prefWidth="1082.0">
+         <content>
+            <Pane prefWidth="1080.0">
+               <children>
+                  <Pane fx:id="candlestickPane" layoutY="52.0" prefHeight="800.0" prefWidth="1065.0" styleClass="pic-area">
+                     <children>
+                        <BarChart fx:id="volumeBarChart" animated="false" layoutX="30.0" layoutY="490.0" legendVisible="false" maxHeight="300.0" minHeight="300.0" prefHeight="300.0" prefWidth="1000.0">
+                          <xAxis>
+                            <CategoryAxis fx:id="volumeXAxis" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="volumeYAxis" animated="false" autoRanging="false" minorTickCount="1" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <HBox layoutX="210.0" layoutY="10.0">
+                           <children>
+                              <Label layoutX="185.0" layoutY="46.0" minWidth="47.0" text="-MA 5-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line1" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass></Label>
+                              <Label fx:id="ma5label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line1" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="309.0" layoutY="58.0" minWidth="55.0" text="-MA 10-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line2" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></Label>
+                              <Label fx:id="ma10label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line2" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="485.0" layoutY="82.0" minWidth="55.0" text="-MA 30-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line3" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></Label>
+                              <Label fx:id="ma30label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line3" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="583.0" layoutY="82.0" minWidth="55.0" text="-MA 60-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line4" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></Label>
+                              <Label fx:id="ma60label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line4" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="701.0" layoutY="70.0" minWidth="63.0" text="-MA 120-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line5" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></Label>
+                              <Label fx:id="ma120label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line5" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="682.0" layoutY="127.0" minWidth="63.0" text="-MA 240-">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line6" />
+                                    <String fx:value="candlestick-average-line" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></Label>
+                              <Label fx:id="ma240label" minWidth="-Infinity">
+                                 <styleClass>
+                                    <String fx:value="candlestick-average-line" />
+                                    <String fx:value="candlestick-average-line6" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label fx:id="volumeUnit" layoutX="30.0" layoutY="475.0" style="-fx-font-size: 14;" text="成交量/千" />
+                     </children>
+                  </Pane>
+                  <HBox styleClass="background-hbox">
+                     <children>
+                        <Button fx:id="dayKBtn" layoutX="55.0" layoutY="40.0" mnemonicParsing="false" onAction="#showDayGraph" prefHeight="50.0" prefWidth="120.0" styleClass="choose-pic-btn" text="日K线图" />
+                        <Button fx:id="weekKBtn" layoutX="155.0" layoutY="40.0" mnemonicParsing="false" onAction="#showWeekGraph" prefHeight="50.0" prefWidth="120.0" styleClass="choose-pic-btn" text="周K线图" />
+                        <Button fx:id="monthKBtn" layoutX="255.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMonthGraph" prefHeight="50.0" prefWidth="120.0" styleClass="choose-pic-btn" text="月K线图" />
+                     </children>
+                  </HBox>
+                  <Label id="sliderPicLabel" fx:id="sliderPicLabel" layoutY="50.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="120.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="676.0" layoutY="11.0" spacing="20.0">
+                     <children>
+                        <Label layoutX="606.0" layoutY="52.0" text="从" />
+                        <DatePicker fx:id="startDatePicker" layoutX="639.0" layoutY="49.0" prefHeight="30.0" prefWidth="140.0" promptText="2017-3-12" />
+                        <Label layoutX="782.0" layoutY="52.0" text="到" />
+                        <DatePicker fx:id="endDatePicker" layoutX="817.0" layoutY="49.0" prefWidth="140.0" promptText="2017-3-12" />
+                     </children>
+                  </HBox>
+                  <ProgressIndicator fx:id="loadingIndicator" layoutX="630.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0" progress="0.0" visible="false" />
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+      <Pane layoutX="135.0" layoutY="50.0" prefHeight="200.0" prefWidth="1080.0" styleClass="stock-info-area">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="240.0" styleClass="title-background">
+               <children>
+                  <Label fx:id="stockName" alignment="CENTER" layoutX="61.0" layoutY="40.0" styleClass="stock-title" text="深发展A" />
+                  <Label fx:id="stockCode" layoutX="64.0" layoutY="100.0" styleClass="stock-code" text="00800" GridPane.columnIndex="1" />
+               </children>
+            </Pane>
+            <GridPane hgap="40.0" layoutX="632.0" layoutY="34.0" vgap="30.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="最高价：" />
+                  <Label text="最低价：" GridPane.columnIndex="2" />
+                  <Label text="开盘价：" GridPane.rowIndex="1" />
+                  <Label text="收盘价：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="成交量：" GridPane.rowIndex="2" />
+                  <Label text="复权价：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label fx:id="highLabel" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="lowLabel" text="Label" GridPane.columnIndex="3" />
+                  <Label fx:id="openLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="closeLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="volumLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="adjcloseLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Label fx:id="increaseLabel" layoutX="358.0" layoutY="144.0" styleClass="change-label" text="+5.02%" />
+            <Label fx:id="changeLabel" layoutX="358.0" layoutY="118.0" styleClass="change-label" text="+1.04" />
+            <Label id="rmbIcon" fx:id="rmbIcon" layoutX="309.0" layoutY="30.0" prefHeight="24.0" prefWidth="2.0" styleClass="stock-increase" text="¥" />
+            <Separator layoutX="540.0" layoutY="20.0" orientation="VERTICAL" prefHeight="160.0" />
+            <Label id="nowLabel" fx:id="nowLabel" layoutX="358.0" layoutY="30.0" styleClass="stock-increase" text="21.75" />
+            <ImageView fx:id="increaseIcon" fitHeight="50.0" fitWidth="40.0" layoutX="304.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/up.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</fx:root>

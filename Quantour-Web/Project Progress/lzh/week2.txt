@@ -1,0 +1,5 @@
+who : 林志和
+when: 第二周
+what: 完成市场的逻辑业务与数据层代码
+problem : 代码平平
+todo : 进一步完善代码，阅读github优秀项目

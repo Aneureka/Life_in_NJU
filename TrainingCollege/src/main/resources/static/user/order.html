@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="orderForm">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">课程名称</label>
+        <div class="col-sm-3">
+            <p class="form-control-static" id="lessonName"></p>
+        </div>
+    </div>
+    <div class="form-group" id="selectingClass">
+        <label class="col-sm-1 control-label">选班</label>
+        <div class="col-sm-1">
+            <input type="radio" name="selectingClass" class="selectingClass" value="none" checked>
+            <label class="form-check-label">不选班</label>
+        </div>
+    </div>
+    <div class="form-group" id="studentNames">
+        <label class="col-sm-1 control-label">学生姓名</label>
+        <div class="col-sm-1">
+            <input class="form-control studentName" type="text" title="studentName"/>
+        </div>
+        <button type="button" class="btn btn-primary" id="add">+</button>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="order">预订课程</button>
+        </div>
+    </div>
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkUserLogin();
+    $('#name').text(window.localStorage.getItem('name'));
+    let maxStudentAmount = 3;
+    let curStudentAmount = 1;
+
+    $().ready(() => {
+
+        // load lesson name
+        let lessonName = window.localStorage.getItem('lessonName');
+        $('#lessonName').text(lessonName);
+
+        // load classes
+        let lessonId = window.localStorage.getItem('lessonId');
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/classes',
+            data: {lessonId: lessonId},
+            success: (response) => {
+                let classes = response.data;
+                $.each(classes, (seq, className) => {
+                    $('#selectingClass').append(
+                        '<div class="col-sm-1">\n' +
+                        '    <input type="radio" name="selectingClass" class="selectingClass" value="' + className + '">\n' +
+                        '    <label class="form-check-label">' + className + '</label>\n' +
+                        '</div>'
+                    );
+                });
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#selectingClass').on('change', '.selectingClass', function() {
+            let choice = $(this).prop('value');
+            if (choice === 'none') {
+                maxStudentAmount = 9;
+                console.log(9);
+            }
+            else {
+                maxStudentAmount = 3;
+                console.log(3);
+
+            }
+        });
+
+        $('#add').click(function () {
+            if (curStudentAmount < maxStudentAmount) {
+                $(this).before(
+                    '<div class="col-sm-1">\n' +
+                    '    <input class="form-control studentName" type="text" title="studentName"/>\n' +
+                    '</div>')
+                curStudentAmount++;
+            }
+            else {
+                alert('不能再添加学生啦！');
+            }
+
+        });
+
+        $('#orderForm').on('click', '#order', function () {
+
+            let selectingClass = $('input[name="selectingClass"]:checked').val();
+            console.log(selectingClass);
+
+            let studentNames = [];
+            $.each($('#studentNames').find('.studentName'), (seq, t) => {
+                studentNames.push(t.value);
+            });
+
+            let d = JSON.stringify({
+                lessonId: lessonId,
+                selectingClass: selectingClass,
+                studentNames: studentNames
+            });
+
+            console.log(d);
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/trainings/orders',
+                data: d,
+                success: (response) => {
+                    if (response.success) {
+                        alert('预订成功！');
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType:"json"
+            });
+        });
+
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

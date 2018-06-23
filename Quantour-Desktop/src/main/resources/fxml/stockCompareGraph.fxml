@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1350.0" styleClass="all-background-panel" stylesheets="@../css/main.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.StockCompareGraphController">
+   <children>
+      <Pane fx:id="generalPane" layoutX="29.0" layoutY="119.0" prefHeight="712.0" prefWidth="262.0">
+         <children>
+            <Pane layoutX="20.0" layoutY="390.0" prefHeight="288.0" prefWidth="222.0" styleClass="background-panel">
+               <children>
+                  <Pane prefHeight="100.0" prefWidth="223.0" styleClass="stock-two-title-background">
+                     <children>
+                        <Label fx:id="stockTwoName" layoutX="32.0" layoutY="15.0" styleClass="stock-title" text="深发展B" />
+                        <Label fx:id="stockTwoCode" layoutX="32.0" layoutY="60.0" styleClass="stock-code" text="00700" />
+                     </children>
+                  </Pane>
+                  <GridPane layoutX="32.0" layoutY="115.0" vgap="7.0">
+                     <children>
+                        <Label styleClass="smaller" text="最高价：" />
+                        <Label styleClass="smaller" text="最低价：" GridPane.rowIndex="1" />
+                        <Label styleClass="smaller" text="涨   幅：" GridPane.rowIndex="2" />
+                        <Label styleClass="smaller" text="涨   跌：" GridPane.rowIndex="3" />
+                        <Label fx:id="stockTwoHigh" styleClass="smaller" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="stockTwoLow" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="stockTwoChaPercent" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="stockTwoChaAmount" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lrVariance2" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+                           <children>
+                              <Label styleClass="smaller" text="对数收" />
+                              <Label styleClass="smaller" text="益率方差：" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="55.0" prefHeight="288.0" prefWidth="222.0" styleClass="background-panel">
+               <children>
+                  <Pane prefHeight="100.0" prefWidth="223.0" styleClass="stock-one-title-background">
+                     <children>
+                        <Label fx:id="stockOneName" layoutX="32.0" layoutY="15.0" styleClass="stock-title" text="深发展A" />
+                        <Label fx:id="stockOneCode" layoutX="32.0" layoutY="60.0" styleClass="stock-code" text="00700" />
+                     </children>
+                  </Pane>
+                  <GridPane layoutX="32.0" layoutY="115.0" vgap="7.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label styleClass="smaller" text="最高价：" />
+                        <Label styleClass="smaller" text="最低价：" GridPane.rowIndex="1" />
+                        <Label styleClass="smaller" text="涨   幅：" GridPane.rowIndex="2" />
+                        <Label styleClass="smaller" text="涨   跌：" GridPane.rowIndex="3" />
+                        <Label fx:id="stockOneHigh" styleClass="smaller" text="9890809" GridPane.columnIndex="1" />
+                        <Label fx:id="stockOneLow" styleClass="smaller" text="90890809" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="stockOneChaPercent" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="stockOneChaAmount" styleClass="smaller" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lrVariance1" styleClass="smaller" text="99" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+                           <children>
+                              <Label styleClass="smaller" text="对数收" />
+                              <Label styleClass="smaller" text="益率方差：" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="14.0" spacing="5.0">
+               <children>
+                  <Label fx:id="startDateLabel" layoutX="13.0" layoutY="14.0" text="2017-03-11" />
+                  <Label layoutX="122.0" layoutY="14.0" text="到" />
+                  <Label fx:id="endDateLabel" layoutX="149.0" layoutY="14.0" text="2017-03-11" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="scrollGraphPane" layoutX="340.0" layoutY="130.0" prefHeight="704.0" prefWidth="960.0" styleClass="content-panel">
+         <children>
+            <LineChart fx:id="dayLogReturnChart" layoutX="10.0" layoutY="440.0" prefHeight="250.0" prefWidth="950.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" fx:id="xAxisReturn" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxisReturn" side="LEFT" />
+               </yAxis>
+            </LineChart>
+            <LineChart fx:id="dayCloseChart" layoutX="10.0" layoutY="105.0" prefHeight="250.0" prefWidth="950.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" fx:id="xAxisClose" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxisClose" side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Label layoutX="32.0" layoutY="45.0" prefHeight="40.0" prefWidth="10.0" styleClass="head-tag" />
+            <Label layoutX="60.0" layoutY="53.0" text="每日收盘价" />
+            <Label layoutX="60.0" layoutY="385.0" text="每日对数收益率" />
+            <Label layoutX="32.0" layoutY="377.0" prefHeight="40.0" prefWidth="10.0" styleClass="head-tag" />
+         </children>
+      </Pane>
+      <Pane layoutX="337.0" layoutY="15.0" prefHeight="90.0" prefWidth="960.0" styleClass="content-panel">
+         <children>
+            <Button fx:id="comparedBtn" layoutX="724.0" layoutY="52.0" mnemonicParsing="false" onAction="#showCompareGraph" styleClass="check-btn" text="查看对比" />
+            <Label fx:id="exceptionLabel" layoutX="850.0" layoutY="52.0" styleClass="stock-increase" text="Label" visible="false" />
+            <GridPane hgap="20.0" layoutX="392.0" layoutY="8.0" vgap="15.0">
+               <children>
+                  <DatePicker fx:id="startDatePicker" prefWidth="180.0" promptText="2017-12-12" GridPane.columnIndex="1" />
+                  <Label text="开始时间：" />
+                  <DatePicker fx:id="endDatePicker" prefWidth="180.0" promptText="2017-12-12" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="结束时间：" GridPane.rowIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane hgap="20.0" layoutX="60.0" layoutY="8.0" vgap="15.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="comparedField1" promptText="股票名称/代码" GridPane.columnIndex="1" />
+                  <TextField fx:id="comparedField2" promptText="股票名称/代码" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="股票1：" />
+                  <Label text="股票2：" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+      <Separator layoutX="50.0" layoutY="115.0" prefHeight="0.0" prefWidth="1250.0" />
+   </children>
+</fx:root>

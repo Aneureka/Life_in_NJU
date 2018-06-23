@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>简要描述</th>
+        <th>价格</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>时间安排</th>
+        <th>创建时间</th>
+        <th>教室数量</th>
+        <th>已支付订单量</th>
+        <th>退订量</th>
+        <th>利润（元）</th>
+    </tr>
+    </thead>
+    <tbody id="lessonsForInstitute"></tbody>
+</table>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkInstituteLogin();
+    $('#instituteName').text(window.localStorage.getItem('instituteName'));
+
+    let showLessonsForInstitute = (lessonsForInstitute) => {
+        $.each(lessonsForInstitute, (seq, lesson) => {
+            let id = lesson['id'];
+            let name = lesson['name'];
+            let description = lesson['description'];
+            let price = lesson['price'];
+            let start = lesson['start'];
+            let end = lesson['end'];
+            let timePlan = lesson['timePlan'];
+            let createdAt = lesson['createdAt'];
+            let classNumber = lesson['classNumber'];
+            let paidNumber = lesson['paidNumber'];
+            let withdrawnNumber = lesson['withdrawnNumber'];
+            let profit = lesson['profit'];
+
+            let item =
+                '<tr class="lesson" style="cursor:pointer">' +
+                '<td>' + id + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + description + '</td>' +
+                '<td>' + price + '</td>' +
+                '<td>' + start + '</td>' +
+                '<td>' + end + '</td>' +
+                '<td>' + timePlan + '</td>' +
+                '<td>' + createdAt + '</td>' +
+                '<td>' + classNumber + '</td>' +
+                '<td>' + paidNumber + '</td>' +
+                '<td>' + withdrawnNumber + '</td>' +
+                '<td>' + profit + '</td></tr>';
+            $('#lessonsForInstitute').append(item);
+        });
+    };
+
+    $().ready(() => {
+
+        let lessons = null;
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/forInstitute',
+            data: {},
+            success: (response) => {
+                lessons = response.data;
+                showLessonsForInstitute(lessons);
+                console.log(lessons);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#lessonsForInstitute').on('click', '.lesson', function () {
+            let lessonId = $(this).children().first().text();
+            window.localStorage.setItem('lessonIdForInstitute', lessonId);
+            window.location.href = 'lesson.html';
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/institutes/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

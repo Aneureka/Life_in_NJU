@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="profile">
+    <div class="form-group">
+        <label class="col-sm-1 control-label" for="myName">姓名</label>
+        <div class="col-sm-1">
+            <input class="form-control" id="myName" type="text" name="myName"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="modify">确认修改</button>
+        </div>
+    </div>
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkUserLogin();
+    $('#name').text(window.localStorage.getItem('name'));
+
+    $().ready(() => {
+
+        $('#modify').click(() => {
+            let name = $('#myName').val();
+            console.log(name);
+            $.ajax({
+                type: 'POST',
+                url: '/api/users/profile',
+                data: {name: name},
+                success: (response) => {
+                    alert('修改成功');
+                    window.localStorage.setItem('name', response.data['name']);
+                    location.reload();
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

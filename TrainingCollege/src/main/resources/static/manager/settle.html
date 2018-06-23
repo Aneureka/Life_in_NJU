@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>课程号</th>
+        <th>课程名称</th>
+        <th>机构名称</th>
+        <th>简要描述</th>
+        <th>价格</th>
+        <th>开始日期</th>
+        <th>结束日期</th>
+        <th>利润（元）</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="lessonsForManager"></tbody>
+</table>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkManagerLogin();
+
+    let showLessonsForManager = (lessonsForManager) => {
+        $.each(lessonsForManager, (seq, lesson) => {
+            let id = lesson['id'];
+            let lessonName = lesson['lessonName'];
+            let instituteName = lesson['instituteName'];
+            let description = lesson['description'];
+            let price = lesson['price'];
+            let start = lesson['start'];
+            let end = lesson['end'];
+            let profit = lesson['profit'];
+
+            let item =
+                '<tr class="lesson">' +
+                '<td>' + id + '</td>' +
+                '<td>' + lessonName + '</td>' +
+                '<td>' + instituteName + '</td>' +
+                '<td>' + description + '</td>' +
+                '<td>' + price + '</td>' +
+                '<td>' + start + '</td>' +
+                '<td>' + end + '</td>' +
+                '<td>' + profit + '</td>' +
+                '<td><button type="button" class="btn btn-primary settle">结算</button></td></tr>';
+            $('#lessonsForManager').append(item);
+        });
+    };
+
+    $().ready(() => {
+
+        let lessons = null;
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/forManager',
+            data: {},
+            success: (response) => {
+                lessons = response.data;
+                showLessonsForManager(lessons);
+                console.log(lessons);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#lessonsForManager').on('click', '.settle', function (event) {
+            let lessonId = $(this).parent().parent().children().first().text();
+            console.log(lessonId);
+            $.ajax({
+                type: 'GET',
+                url: '/api/trainings/settle',
+                data: {lessonId: lessonId},
+                success: (response) => {
+                    if (response.success) {
+                        alert('结算成功！');
+                        location.reload();
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+
+            event.stopPropagation();
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/institutes/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

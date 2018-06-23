@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="statistics">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">总利润</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="totalProfit">--</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">用户总数量</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="userNumber">--</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">机构总数量</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="instituteNumber">--</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">课程总数量</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="lessonNumber">--</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">订单总数量</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="orderNumber">--</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">学生总数量</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="studentNumber">--</p>
+        </div>
+    </div>
+
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkManagerLogin();
+
+    let setStatistics = (statistics) => {
+        let totalProfit = statistics['totalProfit'];
+        let userNumber = statistics['userNumber'];
+        let instituteNumber = statistics['instituteNumber'];
+        let lessonNumber = statistics['lessonNumber'];
+        let orderNumber = statistics['orderNumber'];
+        let studentNumber = statistics['studentNumber'];
+
+        $('#totalProfit').text(totalProfit);
+        $('#userNumber').text(userNumber);
+        $('#instituteNumber').text(instituteNumber);
+        $('#lessonNumber').text(lessonNumber);
+        $('#orderNumber').text(orderNumber);
+        $('#studentNumber').text(studentNumber);
+    };
+
+
+    $().ready(() => {
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/managers/statistics',
+            data: {},
+            success: (response) => {
+                if (response.success) {
+                    setStatistics(response.data);
+                }
+                else {
+                    alert('获取数据失败！');
+                }
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+
+        $('#logout').click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/managers/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+    })
+
+
+</script>
+
+</body>
+</html>

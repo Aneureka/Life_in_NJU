@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+
+<form class="form-horizontal" role="form" id="applicationForm">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">申请号</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="id"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">机构ID</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="instituteId"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">机构名称</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="name"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">简要描述</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="description"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">邮箱</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="email"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">地址</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="address"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">师资情况</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="teacherInfo"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">申请时间</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="createdAt"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">申请状态</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="status"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">建议</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="advice"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">处理时间</label>
+        <div class="col-sm-4">
+            <p class="form-control-static" id="processedAt"></p>
+        </div>
+    </div>
+
+</form>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkManagerLogin();
+
+    let setApplicationLog = (log) => {
+        let id = log['id'];
+        let instituteId = log['instituteId'] ? log['instituteId'] : '暂无';
+        let name = log['name'];
+        let description = log['description'];
+        let email = log['email'];
+        let address = log['address'];
+        let teacherInfo = log['teacherInfo'];
+        let createdAt = log['createdAt'];
+        let status = log['status'];
+        let advice = log['advice'];
+        let processedAt = log['processedAt'] ? log['processedAt'] : '';
+
+        window.localStorage.setItem('institutePassword', log['password']);
+
+        $('#id').text(id);
+        $('#instituteId').text(instituteId);
+        $('#name').text(name);
+        $('#description').text(description);
+        $('#email').text(email);
+        $('#address').text(address);
+        $('#teacherInfo').text(teacherInfo);
+        $('#createdAt').text(createdAt);
+        $('#status').text(status);
+        $('#advice').text(advice);
+        $('#processedAt').text(processedAt);
+        if (status === '未处理') {
+            $('#processedAt').parent().parent().remove();
+            $('#advice').html('<input class="form-control" id="advice" type="text" name="advice"/>\n');
+            $('#advice').parent().parent().before(
+                '   <div class="form-group">\n' +
+                '        <label class="col-sm-1 control-label">是否通过</label>\n' +
+                '        <div class="col-sm-4 checkbox">\n' +
+                '            <label>\n' +
+                '                <input type="checkbox" class="form-control-static" id="approved" name="approved">\n' +
+                '            </label>\n' +
+                '        </div>\n' +
+                '    </div>'
+            );
+            $('#applicationForm').append(
+                '<div class="form-group">\n' +
+                '    <div class="col-sm-4">\n' +
+                '        <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="submit">确认处理</button>\n' +
+                '    </div>\n' +
+                '</div>'
+            );
+        }
+
+        console.log(log);
+    };
+
+    $().ready(() => {
+
+        let applicationId = window.localStorage.getItem('applicationId');
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/institutes/applicationLog',
+            data: {id : applicationId},
+            success: (response) => {
+                setApplicationLog(response.data);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#applicationForm').on('click', '#submit', function () {
+            let form = $('#applicationForm').find('.form-control-static');
+            console.log(form);
+
+            let id = form[0].innerText;
+            let instituteId = form[1].innerText === '暂无' ? null : form[1].innerText;
+            let name = form[2].innerText;
+            let description = form[3].innerText;
+            let email = form[4].innerText;
+            let address = form[5].innerText;
+            let teacherInfo = form[6].innerText;
+            let createdAt = form[7].innerText;
+            let status = form[8].innerText;
+            let approved = $('input[id="approved"]').prop('checked');
+            let advice = $('input[id="advice"]').val();
+
+            let password = window.localStorage.getItem('institutePassword');
+            window.localStorage.removeItem('institutePassword');
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/institutes/applicationForm',
+                data: {
+                    id: id,
+                    instituteId: instituteId,
+                    name: name,
+                    description: description,
+                    email: email,
+                    password: password,
+                    address: address,
+                    teacherInfo: teacherInfo,
+                    createdAt: createdAt,
+                    status: status,
+                    approved: approved,
+                    advice: advice
+                },
+                success: (response) => {
+                    alert('操作成功！已通过邮件通知培训机构。');
+                    window.location.href = 'home.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+
+        });
+
+
+        $('#logout').click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/managers/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+        });
+
+    })
+
+
+</script>
+
+</body>
+</html>

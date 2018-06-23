@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>订单号</th>
+        <th>课程名称</th>
+        <th>单价</th>
+        <th>总价格</th>
+        <th>创建时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="orders"></tbody>
+</table>
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+
+    let showOrders = (orders) => {
+        $.each(orders, (seq, order) => {
+            let orderId = order['orderId'];
+            let lessonName = order['lessonName'];
+            let price = order['price'];
+            let totalPrice = order['totalPrice'];
+            let createdAt = order['createdAt'];
+            let orderStatus = order['orderStatus'];
+            let operation;
+            if (orderStatus === '未付款') {
+                operation = '<button type="button" class="btn btn-primary pay">付款</button>';
+            }
+            else if (orderStatus === '已付款' || orderStatus === '未配班' || orderStatus === '已配班') {
+                operation = '<button type="button" class="btn btn-primary withdraw">退订</button>';
+            }
+            else {
+                operation = '';
+            }
+
+            let item =
+                '<tr class="order" style="cursor:pointer">' +
+                '<td>' + orderId + '</td>' +
+                '<td>' + lessonName + '</td>' +
+                '<td>' + price + '</td>' +
+                '<td>' + totalPrice + '</td>' +
+                '<td>' + createdAt + '</td>' +
+                '<td>' + orderStatus + '</td>' +
+                '<td>' + operation + '</td>' +
+                '</tr>';
+
+                $('#orders').append(item);
+        });
+    };
+
+    $().ready(() => {
+
+        checkUserLogin();
+        $('#name').text(window.localStorage.getItem('name'));
+
+        let orders = null;
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/trainings/orders',
+            data: {},
+            success: (response) => {
+                orders = response.data;
+                showOrders(orders);
+                console.log(orders);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+
+        $('#orders').on('click', '.order', function () {
+            let orderId = $(this).children().first().text();
+            window.localStorage.setItem('orderId', orderId);
+            window.location.href = 'orderDetail.html';
+        });
+
+        $('#orders').on('click', '.pay', function (event) {
+           let orderId = $(this).parent().parent().children().first().text();
+           $.ajax({
+               type: 'GET',
+               url: '/api/trainings/orders/pay',
+               data: {orderId: orderId},
+               success: (response) => {
+                   if (response.success) {
+                       alert('付款成功！');
+                       location.reload();
+                   }
+                   else {
+                       alert(response.message);
+                   }
+               },
+               error: (XMLHttpRequest) => {
+                   alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+               }
+           });
+
+           event.stopPropagation();
+        });
+
+        $('#orders').on('click', '.withdraw', function (event) {
+            let orderId = $(this).parent().parent().children().first().text();
+            $.ajax({
+                type: 'GET',
+                url: '/api/trainings/orders/withdraw',
+                data: {orderId: orderId},
+                success: (response) => {
+                    if (response.success) {
+                        alert('退订成功！');
+                        location.reload();
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            });
+
+            event.stopPropagation();
+        });
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/users/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

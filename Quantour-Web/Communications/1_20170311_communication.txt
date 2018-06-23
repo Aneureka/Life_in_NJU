@@ -1,0 +1,6 @@
+who：郭浩滨 林志和 吴游杰 吴志成
+when：第二周周六晚上
+what：逻辑层与数据层的接口的调整，前端界面布局样式调整
+where：图书馆研讨间
+how long：2.5h
+arrived solutions：框架基本搭建完成并完成部分代码

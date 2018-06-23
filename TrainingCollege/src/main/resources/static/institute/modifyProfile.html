@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鸡培训中心</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="import" href="navigator.html">
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+    var content = link.import;
+    var el = content.querySelector('#navigator');
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+<form class="form-horizontal" role="form" id="applicationForm">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">机构名称</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="name" type="text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">简要描述</label>
+        <div class="col-sm-3">
+            <textarea class="form-control" id="description" type="text"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">地址</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="address" type="text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">师资情况</label>
+        <div class="col-sm-3">
+            <input class="form-control" id="teacherInfo" type="text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary btn-sm form-control-static col-sm-offset-1" id="modify">确认修改</button>
+        </div>
+    </div>
+</form>
+
+
+
+<script src="../js/util.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script>
+
+    checkInstituteLogin();
+    $('#instituteName').text(window.localStorage.getItem('instituteName'));
+
+    $('#modify').click(() => {
+        let name = $('#name').val();
+        let description = $('#description').val();
+        let address = $('#address').val();
+        let teacherInfo = $('#teacherInfo').val();
+        $.ajax({
+            type: 'POST',
+            url: '/api/institutes/profile',
+            data: {
+                name: name,
+                description: description,
+                address: address,
+                teacherInfo: teacherInfo
+            },
+            success: (response) => {
+                alert(response.message);
+            },
+            error: (XMLHttpRequest) => {
+                alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+            }
+        });
+    });
+
+
+    $().ready(() => {
+
+        $("#logout").click(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/api/institutes/logout',
+                data: {},
+                success: () => {
+                    window.location.href = 'login.html';
+                },
+                error: (XMLHttpRequest) => {
+                    alert(XMLHttpRequest.status + ' ' + XMLHttpRequest.responseText);
+                }
+            })
+        })
+
+    })
+
+
+</script>
+
+</body>
+</html>

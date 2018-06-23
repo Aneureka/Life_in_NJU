@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hiki/OneDrive - smail.nju.edu.cn/Projects/algorithm_lesson/linux/ls.c
+stdio.h
+-
+sys/types.h
+-
+dirent.h
+-
+sys/stat.h
+-
+string.h
+-
+unistd.h
+-
+grp.h
+-
+pwd.h
+-
+time.h
+-
+

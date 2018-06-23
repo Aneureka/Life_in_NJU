@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1350.0" styleClass="all-background-panel" stylesheets="@../css/main.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.StockMarketController">
+   <children>
+      <Label layoutX="490.0" layoutY="41.0" text="选择日期：" />
+      <DatePicker fx:id="datePicker" layoutX="592.0" layoutY="35.0" prefHeight="36.0" prefWidth="189.0" />
+      <Button fx:id="checkBtn" layoutX="822.0" layoutY="38.0" mnemonicParsing="false" onAction="#checkMarketInfo" prefWidth="100.0" styleClass="check-btn" text="查看" />
+      <Separator layoutY="90.0" prefHeight="0.0" prefWidth="1350.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="76.0" layoutY="100.0" prefHeight="720.0">
+         <content>
+            <VBox styleClass="content-panel">
+               <children>
+                  <Pane fx:id="infoPane" prefHeight="700.0" prefWidth="1200.0">
+                     <children>
+                        <Label layoutX="135.0" layoutY="130.0" text="总交易量：" />
+                        <Label fx:id="amountLabel" layoutX="230.0" layoutY="130.0" text="Label" />
+                        <Label fx:id="dateLabel" layoutX="66.0" layoutY="55.0" styleClass="market-head" text="2016-04-04" />
+                        <Label layoutX="257.0" layoutY="55.0" styleClass="market-head" text="市场行情" />
+                        <VBox layoutX="41.0" layoutY="180.0" spacing="10.0">
+                           <children>
+                              <Pane prefHeight="150.0" prefWidth="360.0" styleClass="market-background">
+                                 <children>
+                                    <Label layoutX="60.0" layoutY="90.0" styleClass="stock-increase" text="涨停：" />
+                                    <Label fx:id="upStopLabel" layoutX="114.0" layoutY="90.0" styleClass="stock-increase" text="Label" />
+                                    <Label layoutX="180.0" layoutY="90.0" styleClass="stock-decrease" text="跌停：" />
+                                    <Label fx:id="downStopLabel" layoutX="234.0" layoutY="90.0" styleClass="stock-decrease" text="Label" />
+                                    <ImageView fitHeight="30.0" fitWidth="200.0" layoutX="122.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/up-down.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="161.0" layoutY="17.0" text="涨跌停" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="150.0" prefWidth="360.0" styleClass="market-background">
+                                 <children>
+                                    <Label layoutX="60.0" layoutY="90.0" styleClass="stock-increase" text="上涨：" />
+                                    <Label fx:id="upLabel" layoutX="114.0" layoutY="90.0" styleClass="stock-increase" text="Label" />
+                                    <Label layoutX="180.0" layoutY="90.0" styleClass="stock-decrease" text="下跌：" />
+                                    <Label fx:id="downLabel" layoutX="236.0" layoutY="90.0" styleClass="stock-decrease" text="Label" />
+                                    <ImageView fitHeight="30.0" fitWidth="200.0" layoutX="116.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/indecrease.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="150.0" layoutY="17.0" text="涨跌幅&gt;5%" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="150.0" prefWidth="360.0" styleClass="market-background">
+                                 <children>
+                                    <Label layoutX="60.0" layoutY="90.0" styleClass="stock-increase" text="大于：" />
+                                    <Label layoutX="180.0" layoutY="90.0" styleClass="stock-decrease" text="小于：" />
+                                    <Label fx:id="moreLabel" layoutX="114.0" layoutY="90.0" styleClass="stock-increase" text="Label" />
+                                    <Label fx:id="lessLabel" layoutX="234.0" layoutY="90.0" styleClass="stock-decrease" text="Label" />
+                                    <ImageView fitHeight="30.0" fitWidth="200.0" layoutX="78.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/opencloseprice.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="119.0" layoutY="14.0" text="开盘-收盘 与 上一个" />
+                                    <Label layoutX="125.0" layoutY="44.0" text="交易日收盘价 对比" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <Label layoutX="41.0" layoutY="55.0" prefHeight="40.0" prefWidth="10.0" styleClass="head-tag" />
+                        <BarChart fx:id="updownChart" animated="false" layoutX="453.0" layoutY="180.0" prefHeight="453.0" prefWidth="695.0">
+                          <xAxis>
+                            <CategoryAxis fx:id="updownXAxis" animated="false" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="updownYAxis" animated="false" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <Pane layoutX="489.0" layoutY="626.0" styleClass="all-background-panel">
+                           <children>
+                              <Label layoutX="57.0" styleClass="category-label" text="-10%" />
+                              <Label layoutX="578.0" styleClass="category-label" text="10%" />
+                              <Label styleClass="category-label" text="跌停" />
+                              <Label layoutX="112.0" styleClass="category-label" text="-8%" />
+                              <Label layoutX="162.0" styleClass="category-label" text="-6%" />
+                              <Label layoutX="213.0" styleClass="category-label" text="-4%" />
+                              <Label layoutX="265.0" styleClass="category-label" text="-2%" />
+                              <Label layoutX="326.0" styleClass="category-label" text="0" />
+                              <Label layoutX="370.0" styleClass="category-label" text="2%" />
+                              <Label layoutX="425.0" styleClass="category-label" text="4%" />
+                              <Label layoutX="475.0" styleClass="category-label" text="6%" />
+                              <Label layoutX="529.0" styleClass="category-label" text="8%" />
+                              <Label layoutX="631.0" styleClass="category-label" text="涨停" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="720.0">
+                     <children>
+                        <TableView fx:id="dayStockList" layoutX="39.0" prefHeight="720.0" prefWidth="1100.0">
+                          <columns>
+                              <TableColumn prefWidth="50.0" />
+                            <TableColumn fx:id="stockCodeCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="代码" />
+                            <TableColumn fx:id="stockNameCol" editable="false" prefWidth="160.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="名称" />
+                              <TableColumn fx:id="stockPriceCol" editable="false" prefWidth="110.0" resizable="false" styleClass="RightAlignCol" text="当前价" />
+                              <TableColumn fx:id="stockperCol" editable="false" prefWidth="110.0" resizable="false" styleClass="RightAlignCol" text="涨幅" />
+                              <TableColumn fx:id="stockupCol" editable="false" prefWidth="110.0" resizable="false" styleClass="RightAlignCol" text="涨跌" />
+                              <TableColumn fx:id="stockVolumeCol" editable="false" prefWidth="120.0" resizable="false" styleClass="RightAlignCol" text="成交量" />
+                              <TableColumn fx:id="high" editable="false" prefWidth="110.0" styleClass="RightAlignCol" text="最高价" />
+                              <TableColumn fx:id="low" editable="false" prefWidth="110.0" styleClass="RightAlignCol" text="最低价" />
+                              <TableColumn fx:id="market" editable="false" prefWidth="100.0" sortable="false" styleClass="MidAlignCol" text="市场" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</fx:root>
