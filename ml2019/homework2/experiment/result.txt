@@ -1,0 +1,870 @@
+val accuracy: 0.260000 with lr=0.000010, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.265714 with lr=0.000010, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.208571 with lr=0.000010, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.136429 with lr=0.000010, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.096429 with lr=0.000010, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.160000 with lr=0.000010, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.417143 with lr=0.000010, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.74, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.74, macro_f1: 0.12
+val accuracy: 0.412857 with lr=0.000010, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.75, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.75, macro_f1: 0.12
+val accuracy: 0.215000 with lr=0.000010, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.232143 with lr=0.000010, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.179286 with lr=0.000010, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.192857 with lr=0.000010, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.489286 with lr=0.000010, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.489286 with lr=0.000010, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.307143 with lr=0.000010, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.66, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.293571 with lr=0.000010, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.66, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.256429 with lr=0.000010, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.74, macro_f1: 0.09
+val accuracy: 0.249286 with lr=0.000010, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.74, macro_f1: 0.09
+val accuracy: 0.512857 with lr=0.000010, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.91, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.17
+val accuracy: 0.513571 with lr=0.000010, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.91, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.17
+val accuracy: 0.350000 with lr=0.000010, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.69, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.70, macro_f1: 0.11
+val accuracy: 0.346429 with lr=0.000010, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.70, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.70, macro_f1: 0.12
+val accuracy: 0.284286 with lr=0.000010, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.267143 with lr=0.000010, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.263571 with lr=0.000010, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.251429 with lr=0.000010, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.149286 with lr=0.000010, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.157857 with lr=0.000010, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.127143 with lr=0.000010, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.089286 with lr=0.000010, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.407143 with lr=0.000010, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.74, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.74, macro_f1: 0.12
+val accuracy: 0.411429 with lr=0.000010, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.74, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.74, macro_f1: 0.12
+val accuracy: 0.206429 with lr=0.000010, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.242857 with lr=0.000010, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.200000 with lr=0.000010, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.212143 with lr=0.000010, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.486429 with lr=0.000010, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.490714 with lr=0.000010, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.317857 with lr=0.000010, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.05, micro_r: 0.65, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.318571 with lr=0.000010, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.05, micro_r: 0.65, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.257857 with lr=0.000010, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.74, macro_f1: 0.09
+val accuracy: 0.256429 with lr=0.000010, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.74, macro_f1: 0.09
+val accuracy: 0.514286 with lr=0.000010, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.91, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.17
+val accuracy: 0.513571 with lr=0.000010, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.347857 with lr=0.000010, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.69, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.69, macro_f1: 0.11
+val accuracy: 0.355714 with lr=0.000010, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.70, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.70, macro_f1: 0.11
+val accuracy: 0.269286 with lr=0.000010, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.274286 with lr=0.000010, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.264286 with lr=0.000010, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.262143 with lr=0.000010, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.159286 with lr=0.000010, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.166429 with lr=0.000010, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.110714 with lr=0.000010, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.146429 with lr=0.000010, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 1.00, micro_f1: 0.07, macro_p: 0.04, macro_r: 1.00, macro_f1: 0.07
+val accuracy: 0.414286 with lr=0.000010, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.75, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.75, macro_f1: 0.12
+val accuracy: 0.409286 with lr=0.000010, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.07, micro_r: 0.75, micro_f1: 0.12, macro_p: 0.07, macro_r: 0.75, macro_f1: 0.12
+val accuracy: 0.246429 with lr=0.000010, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.248571 with lr=0.000010, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.04, micro_r: 0.78, micro_f1: 0.08, macro_p: 0.04, macro_r: 0.78, macro_f1: 0.08
+val accuracy: 0.177143 with lr=0.000010, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.186429 with lr=0.000010, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.04, micro_r: 0.99, micro_f1: 0.07, macro_p: 0.04, macro_r: 0.99, macro_f1: 0.07
+val accuracy: 0.487143 with lr=0.000010, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.487857 with lr=0.000010, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.08, micro_r: 0.88, micro_f1: 0.15, macro_p: 0.08, macro_r: 0.88, macro_f1: 0.15
+val accuracy: 0.309286 with lr=0.000010, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.05, micro_r: 0.65, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.295714 with lr=0.000010, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.66, micro_f1: 0.10, macro_p: 0.06, macro_r: 0.66, macro_f1: 0.10
+val accuracy: 0.270714 with lr=0.000010, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.74, macro_f1: 0.09
+val accuracy: 0.264286 with lr=0.000010, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.73, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.73, macro_f1: 0.09
+val accuracy: 0.515714 with lr=0.000010, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.91, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.17
+val accuracy: 0.514286 with lr=0.000010, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.362143 with lr=0.000010, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.70, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.70, macro_f1: 0.11
+val accuracy: 0.349286 with lr=0.000010, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.06, micro_r: 0.69, micro_f1: 0.11, macro_p: 0.06, macro_r: 0.69, macro_f1: 0.11
+val accuracy: 0.282143 with lr=0.000010, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.277143 with lr=0.000010, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.05, micro_r: 0.66, micro_f1: 0.09, macro_p: 0.05, macro_r: 0.66, macro_f1: 0.09
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650714 with lr=0.001000, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.562857 with lr=0.001000, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.564286 with lr=0.001000, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.510000 with lr=0.001000, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.510714 with lr=0.001000, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.683571 with lr=0.001000, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.683571 with lr=0.001000, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.634286 with lr=0.001000, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.632857 with lr=0.001000, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.592857 with lr=0.001000, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.92, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.593571 with lr=0.001000, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.91, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.697857 with lr=0.001000, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.697857 with lr=0.001000, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.667143 with lr=0.001000, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.667857 with lr=0.001000, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.637143 with lr=0.001000, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+val accuracy: 0.636429 with lr=0.001000, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+val accuracy: 0.698571 with lr=0.001000, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.698571 with lr=0.001000, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.29, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.651429 with lr=0.001000, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650714 with lr=0.001000, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.562857 with lr=0.001000, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.561429 with lr=0.001000, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.512143 with lr=0.001000, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.510000 with lr=0.001000, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.683571 with lr=0.001000, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.683571 with lr=0.001000, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.634286 with lr=0.001000, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.634286 with lr=0.001000, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.592143 with lr=0.001000, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.92, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.592143 with lr=0.001000, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.91, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.697857 with lr=0.001000, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.697857 with lr=0.001000, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.667857 with lr=0.001000, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.667857 with lr=0.001000, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.637143 with lr=0.001000, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+val accuracy: 0.637143 with lr=0.001000, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+val accuracy: 0.698571 with lr=0.001000, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.698571 with lr=0.001000, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.674286 with lr=0.001000, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.29, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.675000 with lr=0.001000, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.650000 with lr=0.001000, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.650000 with lr=0.001000, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.650714 with lr=0.001000, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.565714 with lr=0.001000, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.563571 with lr=0.001000, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.11, micro_r: 0.92, micro_f1: 0.19, macro_p: 0.11, macro_r: 0.91, macro_f1: 0.20
+val accuracy: 0.512143 with lr=0.001000, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.17
+val accuracy: 0.512857 with lr=0.001000, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.09, micro_r: 0.90, micro_f1: 0.16, macro_p: 0.09, macro_r: 0.90, macro_f1: 0.16
+val accuracy: 0.683571 with lr=0.001000, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.683571 with lr=0.001000, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.634286 with lr=0.001000, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.635000 with lr=0.001000, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.15, macro_r: 0.90, macro_f1: 0.26
+val accuracy: 0.592143 with lr=0.001000, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.92, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.593571 with lr=0.001000, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.12, micro_r: 0.92, micro_f1: 0.21, macro_p: 0.13, macro_r: 0.91, macro_f1: 0.22
+val accuracy: 0.697857 with lr=0.001000, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.697857 with lr=0.001000, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.667857 with lr=0.001000, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.667857 with lr=0.001000, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.16, micro_r: 0.90, micro_f1: 0.27, macro_p: 0.18, macro_r: 0.90, macro_f1: 0.30
+val accuracy: 0.637143 with lr=0.001000, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+val accuracy: 0.637143 with lr=0.001000, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.14, micro_r: 0.91, micro_f1: 0.24, macro_p: 0.16, macro_r: 0.90, macro_f1: 0.27
+^[[1;2P^[[1;2P^[[1;2P^[[1;2P
+val accuracy: 0.698571 with lr=0.001000, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.698571 with lr=0.001000, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.673571 with lr=0.001000, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.29, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.674286 with lr=0.001000, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.19, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.28
+val accuracy: 0.648571 with lr=0.010000, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.648571 with lr=0.010000, reg=0.000000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.646429 with lr=0.010000, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.90, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.647143 with lr=0.010000, reg=0.000000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650000 with lr=0.010000, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.650000 with lr=0.010000, reg=0.000000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.686429 with lr=0.010000, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.23, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.686429 with lr=0.010000, reg=0.000000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.23, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.682857 with lr=0.010000, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.682857 with lr=0.010000, reg=0.000000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.657857 with lr=0.010000, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.658571 with lr=0.010000, reg=0.000000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.696429 with lr=0.010000, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.696429 with lr=0.010000, reg=0.000000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.699286 with lr=0.010000, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.699286 with lr=0.010000, reg=0.000000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.662143 with lr=0.010000, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.662143 with lr=0.010000, reg=0.000000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.648571 with lr=0.010000, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.648571 with lr=0.010000, reg=0.000010, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.669286 with lr=0.010000, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.669286 with lr=0.010000, reg=0.000010, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.646429 with lr=0.010000, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.646429 with lr=0.010000, reg=0.000010, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.90, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650000 with lr=0.010000, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.650000 with lr=0.010000, reg=0.000010, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.686429 with lr=0.010000, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.23, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.687143 with lr=0.010000, reg=0.000010, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.22, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.682857 with lr=0.010000, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.682857 with lr=0.010000, reg=0.000010, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.658571 with lr=0.010000, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.657857 with lr=0.010000, reg=0.000010, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.696429 with lr=0.010000, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.696429 with lr=0.010000, reg=0.000010, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.699286 with lr=0.010000, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.699286 with lr=0.010000, reg=0.000010, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.662143 with lr=0.010000, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.662143 with lr=0.010000, reg=0.000010, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.648571 with lr=0.010000, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.648571 with lr=0.010000, reg=0.001000, epoch=10, batch_size=10, normalize=False
+micro_p: 0.20, micro_r: 0.87, micro_f1: 0.32, macro_p: 0.25, macro_r: 0.87, macro_f1: 0.39
+val accuracy: 0.668571 with lr=0.010000, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.669286 with lr=0.010000, reg=0.001000, epoch=10, batch_size=50, normalize=False
+micro_p: 0.17, micro_r: 0.90, micro_f1: 0.28, macro_p: 0.20, macro_r: 0.90, macro_f1: 0.32
+val accuracy: 0.647143 with lr=0.010000, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.646429 with lr=0.010000, reg=0.001000, epoch=10, batch_size=100, normalize=False
+micro_p: 0.15, micro_r: 0.91, micro_f1: 0.26, macro_p: 0.17, macro_r: 0.90, macro_f1: 0.29
+val accuracy: 0.650000 with lr=0.010000, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.650000 with lr=0.010000, reg=0.001000, epoch=30, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.33, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.40
+val accuracy: 0.686429 with lr=0.010000, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.23, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.686429 with lr=0.010000, reg=0.001000, epoch=30, batch_size=50, normalize=False
+micro_p: 0.19, micro_r: 0.89, micro_f1: 0.31, macro_p: 0.23, macro_r: 0.88, macro_f1: 0.36
+val accuracy: 0.682857 with lr=0.010000, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.682857 with lr=0.010000, reg=0.001000, epoch=30, batch_size=100, normalize=False
+micro_p: 0.18, micro_r: 0.90, micro_f1: 0.30, macro_p: 0.21, macro_r: 0.90, macro_f1: 0.34
+val accuracy: 0.657857 with lr=0.010000, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.658571 with lr=0.010000, reg=0.001000, epoch=70, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.26, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.696429 with lr=0.010000, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.696429 with lr=0.010000, reg=0.001000, epoch=70, batch_size=50, normalize=False
+micro_p: 0.20, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.24, macro_r: 0.88, macro_f1: 0.38
+val accuracy: 0.699286 with lr=0.010000, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.699286 with lr=0.010000, reg=0.001000, epoch=70, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.32, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.36
+val accuracy: 0.662143 with lr=0.010000, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.662143 with lr=0.010000, reg=0.001000, epoch=100, batch_size=10, normalize=False
+micro_p: 0.21, micro_r: 0.87, micro_f1: 0.34, macro_p: 0.27, macro_r: 0.87, macro_f1: 0.41
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, epoch=100, batch_size=50, normalize=False
+micro_p: 0.21, micro_r: 0.88, micro_f1: 0.33, macro_p: 0.25, macro_r: 0.88, macro_f1: 0.39
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, epoch=100, batch_size=100, normalize=False
+micro_p: 0.20, micro_r: 0.89, micro_f1: 0.33, macro_p: 0.23, macro_r: 0.89, macro_f1: 0.37
+best val accuracy: 0.700000 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.265714 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.260000 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.136429 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.208571 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.160000 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.096429 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.412857 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.417143 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.232143 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.215000 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.192857 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.179286 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.489286 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.489286 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.293571 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.307143 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.249286 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.256429 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.513571 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.512857 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.346429 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.350000 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.267143 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.284286 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.251429 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.263571 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.157857 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.149286 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.089286 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.127143 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.411429 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.407143 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.242857 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.206429 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.212143 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.200000 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.490714 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.486429 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.318571 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.317857 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.256429 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.257857 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.513571 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.514286 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.355714 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.347857 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.274286 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.269286 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.262143 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.264286 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.166429 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.159286 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.146429 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.110714 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.409286 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.414286 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.248571 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.246429 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.186429 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.177143 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.487857 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.487143 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.295714 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.309286 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.264286 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.270714 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.514286 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.515714 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.349286 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.362143 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.277143 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.282143 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.650714 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.564286 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.562857 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.510714 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.510000 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.683571 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.683571 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.632857 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.634286 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.593571 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.592857 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.697857 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.697857 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.667857 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.667143 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.636429 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.637143 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.698571 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.698571 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.650000 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.650714 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.651429 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.561429 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.562857 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.510000 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.512143 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.683571 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.683571 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.634286 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.634286 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.592143 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.592143 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.697857 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.697857 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.667857 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.667857 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.637143 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.637143 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.698571 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.698571 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.675000 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.674286 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.650000 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.650000 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.650714 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.563571 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.565714 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.512857 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.512143 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.683571 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.683571 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.635000 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.634286 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.593571 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.592143 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.697857 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.697857 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.667857 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.667857 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.637143 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.637143 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.698571 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.698571 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.674286 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.673571 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.650000 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.648571 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.648571 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.647143 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.646429 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.650000 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.650000 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.686429 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.686429 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.682857 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.682857 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.658571 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.657857 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.696429 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.696429 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.699286 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.699286 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.662143 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.662143 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.648571 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.648571 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.669286 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.646429 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.646429 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.650000 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.650000 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.687143 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.686429 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.682857 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.682857 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.657857 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.658571 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.696429 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.696429 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.699286 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.699286 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.662143 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.662143 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.648571 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=10, normalize=False
+val accuracy: 0.648571 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=50, normalize=False
+val accuracy: 0.668571 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.646429 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=100, normalize=False
+val accuracy: 0.647143 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.650000 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=10, normalize=False
+val accuracy: 0.650000 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.686429 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=50, normalize=False
+val accuracy: 0.686429 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.682857 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=100, normalize=False
+val accuracy: 0.682857 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.658571 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=10, normalize=False
+val accuracy: 0.657857 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.696429 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=50, normalize=False
+val accuracy: 0.696429 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.699286 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=100, normalize=False
+val accuracy: 0.699286 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.662143 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=10, normalize=False
+val accuracy: 0.662143 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=50, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=100, normalize=False
+val accuracy: 0.700000 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
+
+
+
+val accuracy: 0.360714 with lr=0.000010, reg=0.000000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.207143 with lr=0.000010, reg=0.000000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.100000 with lr=0.000010, reg=0.000000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.440000 with lr=0.000010, reg=0.000000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.380000 with lr=0.000010, reg=0.000000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.251429 with lr=0.000010, reg=0.000000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.463571 with lr=0.000010, reg=0.000000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.427857 with lr=0.000010, reg=0.000000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.411429 with lr=0.000010, reg=0.000000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.477143 with lr=0.000010, reg=0.000000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.442143 with lr=0.000010, reg=0.000000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.448571 with lr=0.000010, reg=0.000000, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.397143 with lr=0.000010, reg=0.000010, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.210714 with lr=0.000010, reg=0.000010, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.110714 with lr=0.000010, reg=0.000010, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.438571 with lr=0.000010, reg=0.000010, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.388571 with lr=0.000010, reg=0.000010, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.255000 with lr=0.000010, reg=0.000010, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.467857 with lr=0.000010, reg=0.000010, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.419286 with lr=0.000010, reg=0.000010, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.371429 with lr=0.000010, reg=0.000010, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.480000 with lr=0.000010, reg=0.000010, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.432143 with lr=0.000010, reg=0.000010, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.404286 with lr=0.000010, reg=0.000010, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.413571 with lr=0.000010, reg=0.001000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.217857 with lr=0.000010, reg=0.001000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.125000 with lr=0.000010, reg=0.001000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.435000 with lr=0.000010, reg=0.001000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.330714 with lr=0.000010, reg=0.001000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.254286 with lr=0.000010, reg=0.001000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.466429 with lr=0.000010, reg=0.001000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.446429 with lr=0.000010, reg=0.001000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.387143 with lr=0.000010, reg=0.001000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.477857 with lr=0.000010, reg=0.001000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.424286 with lr=0.000010, reg=0.001000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.414286 with lr=0.000010, reg=0.001000, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.546429 with lr=0.001000, reg=0.000000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.485000 with lr=0.001000, reg=0.000000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.472857 with lr=0.001000, reg=0.000000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.000000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.530714 with lr=0.001000, reg=0.000000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.499286 with lr=0.001000, reg=0.000000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.000000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.535714 with lr=0.001000, reg=0.000000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.000000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.000000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000000, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000010, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.491429 with lr=0.001000, reg=0.000010, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.474286 with lr=0.001000, reg=0.000010, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.000010, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.530714 with lr=0.001000, reg=0.000010, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.500000 with lr=0.001000, reg=0.000010, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.000010, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.000010, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.536429 with lr=0.001000, reg=0.000010, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.000010, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.000010, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000010, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.546429 with lr=0.001000, reg=0.001000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.485714 with lr=0.001000, reg=0.001000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.475714 with lr=0.001000, reg=0.001000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.001000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.530000 with lr=0.001000, reg=0.001000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.497857 with lr=0.001000, reg=0.001000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.001000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.001000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.535000 with lr=0.001000, reg=0.001000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.001000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.001000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.001000, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.694286 with lr=0.010000, reg=0.000000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.010000, reg=0.000000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.546429 with lr=0.010000, reg=0.000000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.000000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.615000 with lr=0.010000, reg=0.000000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.000000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.000000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.000000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.000000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.000000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.690714 with lr=0.010000, reg=0.000000, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.693571 with lr=0.010000, reg=0.000010, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.593571 with lr=0.010000, reg=0.000010, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.546429 with lr=0.010000, reg=0.000010, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.000010, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.670000 with lr=0.010000, reg=0.000010, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.615714 with lr=0.010000, reg=0.000010, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.000010, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.000010, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.000010, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.000010, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.000010, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.691429 with lr=0.010000, reg=0.000010, epoch=100, batch_size=100, normalize=True
+val accuracy: 0.693571 with lr=0.010000, reg=0.001000, epoch=10, batch_size=10, normalize=True
+val accuracy: 0.594286 with lr=0.010000, reg=0.001000, epoch=10, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.010000, reg=0.001000, epoch=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.001000, epoch=30, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.001000, epoch=30, batch_size=50, normalize=True
+val accuracy: 0.615714 with lr=0.010000, reg=0.001000, epoch=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.001000, epoch=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.001000, epoch=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.001000, epoch=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.001000, epoch=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.001000, epoch=100, batch_size=50, normalize=True
+val accuracy: 0.691429 with lr=0.010000, reg=0.001000, epoch=100, batch_size=100, normalize=True
+best val accuracy: 0.722143 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.360714 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.207143 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.100000 with lr=0.000010, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.440000 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.380000 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.251429 with lr=0.000010, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.463571 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.427857 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.411429 with lr=0.000010, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.477143 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.442143 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.448571 with lr=0.000010, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.397143 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.210714 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.110714 with lr=0.000010, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.438571 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.388571 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.255000 with lr=0.000010, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.467857 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.419286 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.371429 with lr=0.000010, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.480000 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.432143 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.404286 with lr=0.000010, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.413571 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.217857 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.125000 with lr=0.000010, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.435000 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.330714 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.254286 with lr=0.000010, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.466429 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.446429 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.387143 with lr=0.000010, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.477857 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.424286 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.414286 with lr=0.000010, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.546429 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.485000 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.472857 with lr=0.001000, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.530714 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.499286 with lr=0.001000, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.535714 with lr=0.001000, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.491429 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.474286 with lr=0.001000, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.530714 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.500000 with lr=0.001000, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.536429 with lr=0.001000, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.546429 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.485714 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.475714 with lr=0.001000, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.615714 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.530000 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.497857 with lr=0.001000, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.673571 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.565714 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.535000 with lr=0.001000, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.691429 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.001000, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.694286 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.592857 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.546429 with lr=0.010000, reg=0.000000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.615000 with lr=0.010000, reg=0.000000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.000000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.690714 with lr=0.010000, reg=0.000000, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.693571 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.593571 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.546429 with lr=0.010000, reg=0.000010, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.670000 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.615714 with lr=0.010000, reg=0.000010, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.000010, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.691429 with lr=0.010000, reg=0.000010, num_epochs=100, batch_size=100, normalize=True
+val accuracy: 0.693571 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=10, normalize=True
+val accuracy: 0.594286 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=50, normalize=True
+val accuracy: 0.547143 with lr=0.010000, reg=0.001000, num_epochs=10, batch_size=100, normalize=True
+val accuracy: 0.710714 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=10, normalize=True
+val accuracy: 0.669286 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=50, normalize=True
+val accuracy: 0.615714 with lr=0.010000, reg=0.001000, num_epochs=30, batch_size=100, normalize=True
+val accuracy: 0.719286 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=10, normalize=True
+val accuracy: 0.700714 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=50, normalize=True
+val accuracy: 0.673571 with lr=0.010000, reg=0.001000, num_epochs=70, batch_size=100, normalize=True
+val accuracy: 0.722143 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=10, normalize=True
+val accuracy: 0.709286 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=50, normalize=True
+val accuracy: 0.691429 with lr=0.010000, reg=0.001000, num_epochs=100, batch_size=100, normalize=True
