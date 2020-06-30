@@ -24,7 +24,7 @@
         <java.version>1.9</java.version>
         <springboot.version>1.5.9.RELEASE</springboot.version>
         <jax-b.version>2.3.0</jax-b.version>
-        <jackson.version>2.9.2</jackson.version>
+        <jackson.version>2.11.1</jackson.version>
     </properties>
 
     <dependencies>
